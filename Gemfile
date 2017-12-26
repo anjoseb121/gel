@@ -20,7 +20,8 @@ gem 'uglifier', '>= 1.3.0'
 # gem 'therubyracer', platforms: :ruby
 
 # Camaleon CMS is a dynamic and advanced content management system.
-gem "camaleon_cms", '>= 2.4.5'
+# gem "camaleon_cms", '>= 2.4.5'
+gem 'camaleon_cms', :git => 'https://github.com/tisolutions/camaleon-cms.git', :branch => 'master'
 gem 'draper', '~> 3' # only for Rails 5
 
 # Use CoffeeScript for .coffee assets and views
