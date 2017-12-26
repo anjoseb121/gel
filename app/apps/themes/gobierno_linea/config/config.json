@@ -1,0 +1,23 @@
+{
+  "name": "Gobierno en linea",
+  "description": "Tema de Gobierno en linea, Fedemunicipios",
+  "thumb": "images/image.png",
+  "helpers": [
+    "Themes::GobiernoLinea::MainHelper"
+  ],
+  "hooks": {
+    "on_active": [
+      "gobierno_linea_on_install_theme"
+    ],
+    "on_inactive": [
+      "gobierno_linea_on_uninstall_theme"
+    ],
+    "on_theme_settings": [
+      "gobierno_linea_settings"
+    ],
+    "extra_custom_fields": [
+      "slider_custom_fields"
+    ]
+    //here all your hooks
+  }
+}

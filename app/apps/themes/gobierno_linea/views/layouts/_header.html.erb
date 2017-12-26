@@ -1,0 +1,41 @@
+<!-- first navbar -->
+<nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary">
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <ul class="navbar-nav mr-auto">
+    <li class="nav-item">
+      <a class="nav-link" href="#">Mapa del sitio</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link " href="#">Idioma</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link " href="#">Administración del sitio</a>
+    </li>
+  </ul>
+  <form class="form-inline my-2 my-lg-0">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+  </form>
+</div>
+</nav>
+<!-- close first navbar -->
+
+<!-- Logo -->
+ <div class="row">
+  <div class="logo">
+    <a id="logo" class="navbar-brand" href="<%= current_site.the_url %>"><%= image_tag current_site.the_logo, class: "img-responsive" %></a>
+  </div>
+  <div class="textlogo">
+    <h4><%= current_site.the_title %></h4>
+  </div>
+</div>
+<!-- close Logo -->
+
+<!-- segundo navbar -->
+<nav class="my-nav navbar-right navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+<div class=" collapse navbar-collapse" id="navbarNav">
+  <%= raw get_nav_menu('gel_main_menu', 'navbar-nav mr-auto') %>
+</div>
+</nav>
+
+<!-- close second navbar -->
