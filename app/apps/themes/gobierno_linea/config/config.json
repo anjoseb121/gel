@@ -16,7 +16,8 @@
       "gobierno_linea_settings"
     ],
     "extra_custom_fields": [
-      "slider_custom_fields"
+      "slider_custom_fields",
+      "procedure_custom_fields"
     ]
     //here all your hooks
   }
