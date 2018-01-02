@@ -2,8 +2,8 @@
 <div class="containerdos">
   <div class="row">
     <% services.each_with_index do |item, index| %>
-      <div class="carduno" style="width: 15rem;">
-        <img class="card-img-top" src="<%= item['gel_services_image'].first %>" width="50" height="50" alt="<%= item['gel_services_title'].first %>">
+      <div class="carduno">
+        <img class="card-img-top" height="200" src="<%= item['gel_services_image'].first %>" width="50" height="50" alt="<%= item['gel_services_title'].first %>">
         <div class="card-body">
           <h4 class="card-title">
             <%= item['gel_services_title'].first %>

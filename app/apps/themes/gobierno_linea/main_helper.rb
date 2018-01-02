@@ -47,6 +47,12 @@ module Themes::GobiernoLinea::MainHelper
     gr.add_field({"name"=>"Image", "slug"=>"gel_slider_image"},{field_key: "image"})
     gr.add_field({"name"=>"Description", "slug"=>"gel_slider_descr"},{field_key: "text_box", translate: true})
 
+    # Footer
+    group = theme.add_field_group({name: "Footer", slug: "footer"})
+    group.add_field({"name"=>"Column Left", "slug"=>"footer_left"}, {field_key: "editor", translate: true, default_value: "<h4>My Bunker</h4><p>Some Address 987,<br> +34 9054 5455, <br> Madrid, Spain. </p>"})
+    group.add_field({"name"=>"Column Center", "slug"=>"footer_center"}, {field_key: "editor", translate: true, default_value: "<h4>My Links</h4> <p><a href='#'>Dribbble</a><br> <a href='#'>Twitter</a><br> <a href='#'>Facebook</a></p>"})
+    group.add_field({"name"=>"Column Right", "slug"=>"footer_right"}, {field_key: "editor", translate: true, default_value: "<h4>About Theme</h4><p>This cute theme was created to showcase your work in a simple way. Use it wisely.</p>"})
+
     # Terminos y servicios
     gr = current_theme.add_field_group({name: "GEL Servicios", slug: "gel_services", is_repeat: true})
     gr.add_field({"name"=>"Title", "slug"=>"gel_services_title"},{field_key: "text_box", translate: true})
