@@ -18,6 +18,9 @@
     "extra_custom_fields": [
       "slider_custom_fields",
       "procedure_custom_fields"
+    ],
+    "admin_before_load": [
+      "my_theme_admin_before_load"
     ]
     //here all your hooks
   }
