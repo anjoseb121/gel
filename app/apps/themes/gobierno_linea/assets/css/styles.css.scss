@@ -1,181 +1,215 @@
-.img-responsive {
-  width: 4em;
-  height: 4em;
+#app-header {
+  background-color: rgb(4, 57, 80);
 }
 
-.navbar-expand-lg .navbar-nav .menu-item{
-  
-  
-    text-align: center !important;
-    float: none !important;
-  
-  }
-  .container-fluid {
-    
-      padding-right: 0px !important;
-    }
-  
-  
-  .logo{
-  
-    margin-left: 20px;
-    margin-top: 14px;
-    
-  }
-  
-  .textlogo{
-    margin-top: 23px;
-    margin-left: 10px;
-  
-  
-  
-  }
-  
-  .container{
-  
-    margin-top: 30px;
-  }
-  
-  .btn-outline-success {
-      color: white !important;
-      background-color: transparent!important;
-      background-image: none!important;
-      border-color: white!important;
-  
-    }
-  
-  
-    .my-carousel {
-  
-  
-  }
-  
-  body {
-    overflow-x: hidden;
-  }
-  
-  #wrapper {
-    padding-left: 0;
-    -webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;
-  }
-  
-  #wrapper.toggled {
-    padding-left: 250px;
-  }
-  
-  #sidebar-wrapper {
-    z-index: 1000;
-    position: absolute;
-    left: 250px;
-    width: 0;
-    height: 100%;
-    margin-left: -250px;
-    overflow-y: auto;
-    background: #007bff;
-    -webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;
-  }
-  
-  #wrapper.toggled #sidebar-wrapper {
-    width: 250px;
-  }
-  
-  #page-content-wrapper {
-    width: 100%;
-    position: absolute;
-    padding: 15px;
-  }
-  
-  #wrapper.toggled #page-content-wrapper {
-    position: absolute;
-    margin-right: -250px;
-  }
-  
-  
-  /* Sidebar Styles */
-  
-  .sidebar-nav {
-    position: absolute;
-    top: 0;
-    width: 250px;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-  
-  .sidebar-nav li {
-    text-indent: 20px;
-    line-height: 40px;
-  }
-  
-  .sidebar-nav li a {
-    display: block;
-    text-decoration: none;
-    color: #999999;
-  }
-  
-  .sidebar-nav li a:hover {
-    text-decoration: none;
-    color: #fff;
-    background: rgba(255, 255, 255, 0.2);
-  }
-  
-  .sidebar-nav li a:active, .sidebar-nav li a:focus {
-    text-decoration: none;
-  }
-  
-  .sidebar-nav>.sidebar-brand {
-    height: 65px;
-    font-size: 18px;
-    line-height: 60px;
-  }
-  
-  .sidebar-nav>.sidebar-brand a {
-    color: #999999;
-  }
-  
-  .sidebar-nav>.sidebar-brand a:hover {
-    color: #fff;
-    background: none;
-  }
-  
-  @media(min-width:768px) {
-    #wrapper {
-      padding-left: 0;
-    }
-    #wrapper.toggled {
-      padding-left: 250px;
-    }
-    #sidebar-wrapper {
-      width: 0;
-    }
-    #wrapper.toggled #sidebar-wrapper {
-      width: 250px;
-    }
-    #page-content-wrapper {
-      padding: 20px;
-      position: relative;
-    }
-    #wrapper.toggled #page-content-wrapper {
-      position: relative;
-      margin-right: 0;
-    }
-  }
-  
-  .carduno{
-  margin-left: 200px;
-  float: left;
-  }
-  
-  .carddos{
-  float: left;
-  }
-  
-  .my-nav{
-    padding-left: 30% !important;
-  } 
+#app-header .logo {
+  width: 8vh;
+  margin-top: 2%;
+  margin-right: 1em;
+}
+
+#app-header .marca {
+  margin-top: 10px;
+}
+
+#app-header .alcaldia {
+  font-size: 22px;
+}
+
+#app-header .liderando {
+  font-size: 16px;
+}
+
+#app-header .top-icons a {
+  color: white;
+  margin-right: 10px;
+}
+
+#app-header .top-icons a:hover {
+  color: black;
+}
+
+#app-header .fa {
+  font-size: 2.2vw;
+  margin-top: 1vh;
+  padding-right: 1em;
+}
+
+#app-header .navegacion a {
+  font-size: 10px;
+  color: white;
+}
+
+#app-header .navegacion a:hover {
+  color: black;
+}
+
+#app-header #navbarSupportedContent {
+  margin-left: 32px;
+}
+
+#app-header .navbar-default button {
+  font-size: 18px;
+  color: white;
+  position: absolute;
+  left: 84%;
+  top: -13px;
+}
+
+#app-header .navbar-default button:focus{
+  outline: none;
+}
+
+#app-header .item {
+  display: inline-flex;
+}
+
+/* Header listo */
+
+#app-busqueda {
+  height: 280px;
+  width: 100%;
+  background-image: url("../assets/bgimage.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+#app-noticias {
+  height: 350px;
+  width: 100%;
+  background-image: url("../assets/tapiz.jpg");
+}
+
+#app-noticias .carousel {
+  width: 80%;
+}
+
+#app-noticias .noticias img {
+  height: 140px;
+  widows: 140PX;
+}
+
+#app-noticias .badge {
+  position: absolute;
+  height: 35px;
+  width: 60px;
+  top: 105px;
+  right: 31px;
+}
+
+#app-tramites {
+  height: 350px;
+  width: 100%;
+}
+
+#app-tramites .tramites {
+  border-right: 1px solid rgb(4, 57, 80);
+}
+
+#app-tramites .tramites h4,
+#app-tramites .tramites i {
+  color: rgb(4, 57, 80);
+}
+
+
+
+#app-tramites .impuestos,
+#app-tramites .transito,
+#app-tramites .otros
+ {
+  height: 200px;
+  width: 300px;
+  background-color: rgb(223, 223, 223);
+  border: 1px solid rgb(184, 205, 214);
+}
+
+
+#app-tramites .carousel .fa {
+  font-size: 30px;
+}
+
+#app-tramites .carousel p {
+  font-size: 12px;
+}
+
+#app-tramites .ayuda h6,
+#app-tramites .ayuda small,
+#app-tramites .ayuda i
+{
+  color: rgb(4, 57, 80);
+}
+
+#app-tramites .ayuda img {
+  width: 200px;
+  position: absolute;
+  top: -180px;
+}
+
+#app-conocenos {
+  height: 500px;
+  width: 100%;
+  background-color: rgb(92, 91, 91);
+}
+
+#app-conocenos .yotoco-imagen img{
+  height: 110px;
+  width: 150px;
+  margin-top: 10px;
+  border: 1px solid rgb(158, 158, 158);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+}
+
+#app-conocenos .conocenos-yotoco p {
+  font-size: 14px;
+}
+
+#app-conocenos .conocenos-mas li a {
+  font-size: 12px;
+  margin-left: 50px;
+  color: rgb(20, 167, 20);
+}
+
+#app-canales {
+  height: 350px;
+  width: 100%;
+  color: rgb(4, 57, 80);
+}
+
+#app-canales .yotoco-content li {
+  margin-left: 20px;
+}
+
+#app-canales .yotoco-content .icon {
+  margin-left: 20px;
+}
+
+#app-canales .yotoco-content i {
+  font-size: 60px;
+}
+
+#app-colaboradores {
+  height: 130px;
+  width: 100%;
+}
+
+#app-contacto {
+  height: 280px;
+  width: 100%;
+  background-color: rgb(4, 57, 80);
+}
+
+#app-contacto a {
+  color: white;
+}
+
+#app-contacto a:hover {
+  color: black;
+}
+
+#app-contacto p {
+  font-size: 12px;
+}
+
+#app-contacto li {
+  font-size: 12px;
+}

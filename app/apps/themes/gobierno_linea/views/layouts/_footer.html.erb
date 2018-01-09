@@ -1,21 +1,11 @@
-<footer id="footer">
-  <div class="container">
-      <div class="row">
-          <div class="col-lg-4">
-              <div id="text-2" class="widget-wrapper widget_text">
-                  <%= raw current_theme.the_field("footer_left") %>
-              </div>
-          </div>
-          <div class="col-lg-4">
-              <div id="text-3" class="widget-wrapper widget_text">
-                  <%= raw current_theme.the_field("footer_center") %>
-              </div>
-          </div>
-          <div class="col-lg-4">
-              <div id="text-4" class="widget-wrapper widget_text">
-                  <%= raw current_theme.the_field("footer_right") %>
-              </div>
-          </div>
+<section id="app-contacto">
+    <div class="row justify-content-center">
+      <div class="col-6 text-white text-center mt-3">
+        <%= raw current_theme.the_field("footer_left") %>
+        <ul class="list-inline">
+          <%= raw current_theme.the_field("footer_center") %>
+        </ul>
+        <%= raw current_theme.the_field("footer_right") %>
       </div>
-  </div>
-</footer>
+    </div>
+</section>

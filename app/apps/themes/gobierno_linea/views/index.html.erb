@@ -1,32 +1,385 @@
-<% slides = current_theme.the_fields_grouped(['gel_slider_title', 'gel_slider_image', 'gel_slider_descr']) %>
-<div id="carouselExampleIndicators" class="my-carousel carousel slide" data-ride="carousel">
-  <!-- Indicators -->
-  <ol class="carousel-indicators">
-    <% slides.each_with_index do |i, index| %>
-        <li data-target="#carouselExampleIndicators" data-slide-to="<%= index + 1 %>" class="><%= 'active' if index == 0 %>"></li>
-    <% end %>
-  </ol>
+<!-- Seccion de busqueda -->
+<section id="app-busqueda">
+  <div class="container">
+    <div class= "row justify-content-center">
+      <div class="col-8 mt-5">
+        <%= render partial: 'partials/search_form' %>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /Seccion de busqueda -->
 
-  <!-- Wrapper for slides -->
-  <div class="carousel-inner" role="listbox">
-    <% slides.each_with_index do |item, index| %>
-        <div class="carousel-item <%= 'active' if index == 0 %>">
-          <img class="d-block w-100" src="<%= item['gel_slider_image'].first %>" alt="<%= item['gel_slider_title'].first %>">
-          <div class="carousel-caption d-none d-md-block">
-            <h3> <%= item['gel_slider_title'].first %> </h3>
-            <p> <%= item['gel_slider_descr'].first %></p>
+<!-- Seccion de noticias -->
+<section id="app-noticias">
+  <div class="container">
+    <div class="row">
+      <!-- Carrusel -->
+      <% slides = current_theme.the_fields_grouped(['gel_slider_title', 'gel_slider_image', 'gel_slider_descr']) %>
+      <div id="carouselExampleIndicators" class="my-carousel carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <% slides.each_with_index do |i, index| %>
+              <li data-target="#carouselExampleIndicators" data-slide-to="<%= index + 1 %>" class="><%= 'active' if index == 0 %>"></li>
+          <% end %>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+          <% slides.each_with_index do |item, index| %>
+              <div class="carousel-item <%= 'active' if index == 0 %>">
+                <img class="d-block w-100" src="<%= item['gel_slider_image'].first %>" alt="<%= item['gel_slider_title'].first %>">
+                <div class="carousel-caption d-none d-md-block">
+                  <h3> <%= item['gel_slider_title'].first %> </h3>
+                  <p> <%= item['gel_slider_descr'].first %></p>
+                </div>
+              </div>
+          <% end %>
+        </div>
+
+        <!-- Controls -->
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+      <!-- /Carrusel -->
+
+      <!-- Noticias -->
+      <div class="col-6">
+        <div class="container">
+          <div class="row">
+            <div class="col-3 mt-3">
+              <strong>
+                <h3>Noticias</h3>
+              </strong>
+            </div>
+          </div>
+          <br>
+          <div class="row noticias">
+            <% current_site.the_posts(current_theme.get_field("recent_post_type")).latest.limit(current_theme.get_field("home_qty")).decorate.each do |post| %>
+              <div class="col-6">
+                <!-- PORTFOLIO ITEM -->
+                <div class="col-lg-4">
+                  <a class="zoom green" href="<%= post.the_url %>" title="<%= post.the_title %>" >
+                    <img width="400" height="300" src="<%= post.the_thumb_url%>" class="attachment-post-thumbnail wp-post-image" alt="post image" />
+                  </a>
+                  <span class="badge badge-secondary bg-success">
+                    <strong><%= post.the_title %></strong>
+                  </span>
+                </div> <!-- /col -->
+              </div>
+            <% end %> 
+          <div class="row">
+            <div class="col-12 text-center">
+              <button class="btn btn-outline-dark">Más noticias</button>
+            </div>
           </div>
         </div>
-    <% end %>
+      </div>
+      <!-- /Noticias -->
+    </div>
   </div>
-
-  <!-- Controls -->
-  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
+</section>
+<!-- Seccion de noticias -->
 </div>
+<!-- /Primer viewport -->
+
+<!-- Segundo viewport -->
+<div id="seccion2">
+<!-- Seccion de tramites -->
+<section id="app-tramites">
+  <div class="container">
+    <div class="row">
+      <div class="col-6 tramites text-center mt-5">
+        <h4>Trámites y servicios</h4>
+        <div class="row">
+          <div class="col">
+            <div id="carouselIndicators2" class="carousel slide" data-ride="carousel" style="width: 300px; margin: 0 auto">
+              <ol class="carousel-indicators">
+                <li data-target="#carouselIndicators2" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselIndicators2" data-slide-to="1"></li>
+                <li data-target="#carouselIndicators2" data-slide-to="2"></li>
+              </ol>
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <div class="impuestos">
+                    <div class="row text-center">
+                      <div class="col-6 mt-3">
+                        <a href="#">
+                          <i class="fa fa-home" aria-hidden="true"></i>
+                        </a>
+                        <p>Impuesto predial</p>
+                      </div>
+                      <div class="col-6 mt-3">
+                        <a href="#">
+                          <i class="fa fa-car" aria-hidden="true"></i>
+                        </a>
+                        <p>Impuesto vehicular</p>
+                      </div>
+                      <div class="col-6 mt-3">
+                        <a href="#">
+                          <i class="fa fa-industry" aria-hidden="true"></i>
+                        </a>
+                        <p>Industria y comercio</p>
+                      </div>
+                      <div class="col-6 mt-3">
+                        <a href="#">
+                          <i class="fa fa-desktop" aria-hidden="true"></i>
+                        </a>
+                        <p>Consultar tramite</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <div class="impuestos">
+                    <div class="row text-center">
+                      <div class="col-6 mt-3">
+                        <a href="#">
+                            <i class="fa fa-id-card-o" aria-hidden="true"></i>
+                        </a>
+                        <p>Expedición de duplicados de documentos de transito</p>
+                      </div>
+                      <div class="col-6 mt-3">
+                        <a href="#">
+                          <i class="fa fa-car" aria-hidden="true"></i>
+                        </a>
+                        <p>Traspaso de vehiculos</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <div class="impuestos">
+                    <div class="row text-center">
+                      <div class="col-6 mt-3">
+                        <a href="#">
+                            <i class="fa fa-building-o" aria-hidden="true"></i>
+                        </a>
+                        <p>Revisión de estrato en primera instancia</p>
+                      </div>
+                      <div class="col-6 mt-3">
+                        <a href="#">
+                            <i class="fa fa-money" aria-hidden="true"></i>
+                        </a>
+                        <p>Solicitud de verificación de estado de seguridad social</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 ayuda">
+        <div class="row mt-5 ml-5">
+          <div class="col mt-5">
+            <h6>¿Cómo podemos ayudarlo?</h6>
+          </div>
+        </div>
+        <div class="row ml-5">
+          <div class="col-5 text-justify">
+            <p>
+              <small>Encuentre la información de todosos tramites y servicios de la entidad.</small>
+            </p>
+          </div>
+        </div>
+        <div class="row ml-5">
+          <div class="col-1">
+            <ul class="list-unstyled">
+              <li>
+                <a href="#">
+                  <i class="fa fa-comments-o" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fa fa-question" aria-hidden="true"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="col">
+            <ul class="list-unstyled">
+              <li>
+                <small>Chat de atencion en linea</small>
+              </li>
+              <li>
+                <small>Preguntas frecuentes</small>
+              </li>
+            </ul>
+          </div>
+          <div class="col">
+            <img src="./assets/agent.png" alt="Agente">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /Seccion de tramites -->
+<!-- Seccion conocenos -->
+<section id="app-conocenos">
+  <div class="container">
+    <div class="row">
+      <div class="col-5">
+        <div class="row mt-5">
+          <div class="col-4 yotoco-imagen">
+            <img src="./assets/paisaje.jpg" alt="Yotoco imagen 1">
+          </div>
+          <div class="col-4 yotoco-imagen">
+            <img src="./assets/paisaje.jpg" alt="Yotoco imagen 1">
+          </div>
+          <div class="col-4 yotoco-imagen">
+            <img src="./assets/paisaje.jpg" alt="Yotoco imagen 1">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4 yotoco-imagen">
+            <img src="./assets/paisaje.jpg" alt="Yotoco imagen 1">
+          </div>
+          <div class="col-4 yotoco-imagen">
+            <img src="./assets/paisaje.jpg" alt="Yotoco imagen 1">
+          </div>
+          <div class="col-4 yotoco-imagen">
+            <img src="./assets/paisaje.jpg" alt="Yotoco imagen 1">
+          </div>
+        </div>
+        <div class="row mt-5">
+          <div class="col-6 mt-5 pl-5">
+            <button class="btn btn-outline-success">Galeria del municipio</button>
+          </div>
+          <div class="col-6 mt-5">
+            <button class="btn btn-outline-success">Galeria del municipio</button>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-6">
+        <div class="row mt-1">
+          <div class="col mt-5 ml-5">
+            <h4 class="text-success">Conoce nuestro municipio</h4>
+            <div class="text-white conocenos-yotoco">
+              <p>
+                <small>Yotoco, fue fundado el 15 de Septiembre de 1622, por el Capitán Diego Rengifo Salazar, aprovechando el
+                  asiento de la familia de los Yotocoes o Yotocos, en 1858 adquiere la categoría de aldea, y en 1864
+                  recobra la calidad distrital y es bautizado con el nombre de Sucre, nombre que dejó de figurar en la
+                  división territorial que se otorgó al Municipio en 1868. En 1908 por medio del Decreto especial # 455,
+                  se anexo al Distrito de Buga. Con la Ley 23 de 1912, Yotoco fue anexado a Cali. Por Ultimo en cumplimiento
+                  de la Ley l28 de 1912, Volvió a pertenecer al Distrito de Buga hasta que fue eregido Municipio. </small>
+              </p>
+              <p>
+                <small>Extensión total: 873 Kilimetros Km2</small>
+              </p>
+              <p>
+                <small>Altitud de la cabecera municipal(metros sobre niveldel mar): 972 MTS</small>
+              </p>
+              <p>
+                <small>Temperatura media: 24º Cº C</small>
+              </p>
+              <p>
+                <small>Distancia de referencia: 56.4 kme la ciudad de Cali.</small>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="row conocenos-mas">
+          <div class="col">
+            <ul class="list-inline">
+              <li class="list-inline-item">
+                <a href="#">&#9679; Vias de comunicaciones</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">&#9679; Ecologia</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">&#9679; Economia</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /Seccion conocenos -->
+</div>
+<!-- /Segundo viewport -->
+<!-- Tercer viewport -->
+<div id="seccion3">
+<!-- Seccion canales -->
+<section id="app-canales" class="bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-6 mt-5">
+        <div class="row mt-5 ml-3">
+          <div class="col-9">
+            <p>PARTICIPACION CIUDADANA</p>
+            <h3>En contacto con la comunidad</h3>
+            <p>
+              <small>Ofrecemos canales de atención y participación para nuestos ciudadanos</small>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="row mt-5">
+          <div class="col yotoco-content mt-5">
+            <div class="row ml-5 mt-4">
+              <div class="col-2 icon text-center">
+                <i class="fa fa-list-ol" aria-hidden="true"></i>
+                <p>Foros</p>
+              </div>
+              <div class="col-2 icon text-center">
+                <i class="fa fa-check-square" aria-hidden="true"></i>
+                <p>Datos abiertos</p>
+              </div>
+              <div class="col-2 icon text-center">
+                <i class="fa fa-list-ul" aria-hidden="true"></i>
+                <p>Foros</p>
+              </div>
+              <div class="col-2 icon text-center">
+                <i class="fa fa-list-alt" aria-hidden="true"></i>
+                <p>Foros</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /Seccion canales -->
+
+<!-- Seccion colaboradores -->
+<section id="app-colaboradores">
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <div class="row justify-content-between mt-3">
+        <div class="col-2">
+          <img src="./assets/mpg.png" alt="MPG logo">
+        </div>
+        <div class="col-2">
+          <img src="./assets/sirvo_mi_pais.png" alt="Sirvo mi pais logo">
+        </div>
+        <div class="col-2">
+          <img src="./assets/no_filas.png" alt="No Filas logo">
+        </div>
+        <div class="col-2">
+          <img src="./assets/colombia_compra_eficiente.png" alt="colombia compra eficiente logo">
+        </div>
+        <div class="col-2">
+          <img src="./assets/urna_cristal.png" alt="urna cristal logo">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /Seccion colaboradores -->

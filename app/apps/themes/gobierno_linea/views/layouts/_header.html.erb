@@ -1,42 +1,52 @@
-<!-- first navbar -->
-<nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary">
-<div class="collapse navbar-collapse" id="navbarSupportedContent">
-  <ul class="navbar-nav mr-auto">
-    <li class="nav-item">
-      <a class="nav-link" href="/sitemap.html">Mapa del sitio</a>
-    </li>
-    <%= raw current_site.draw_languages("language list-inline pull-right", true) %>
-  </ul>
-  <form class="form-inline my-2 my-lg-0">
-    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-  </form>
-</div>
-</nav>
-<!-- close first navbar -->
+<!-- header -->
+<header id="app-header">
+  <div class="container">
+    <div class="row text-white">
+      <div class="col-6">
+        <%= image_tag current_site.the_logo, class: "img-fluid float-left logo" %>
+        <ul class="list-unstyled marca">
+          <li class="alcaldia"><%= current_site.the_title %></li>
+          <li class="liderando"><%= current_site.the_content %></li>
+        </ul>
+      </div>
+      <div class="col-6">
+        <!-- Iconos -->
+        <div class="row top-icons">
+          <div class="col-12 text-right">
+            <a href="#">
+              <i class="fa fa-cog" aria-hidden="true"></i>
+            </a>
+            <a href="#">
+              <i class="fa fa-question-circle" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+        <!-- /Iconos -->
+        <!-- Navegacion -->
+        <div class="col navegacion mt-2">
+          <div class="row">
+            <div class="col">
+              <nav class="navbar navbar-expand-lg navbar-default text-right">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                  aria-expanded="false" aria-label="Toggle navigation">
+                  <i class="fa fa-bars" aria-hidden="true"></i>
+                </button>
 
-<!-- Logo -->
- <div class="row">
-  <div class="logo">
-    <a id="logo" class="navbar-brand" href="<%= current_site.the_url %>"><%= image_tag current_site.the_logo, class: "img-responsive" %></a>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav">
+                    <% cama_menu_parse_items(current_site.nav_menus.find_by_slug('gel_main_menu').children).each do |item| %>
+                      <li class="nav-item active align-self-end">
+                        <a class="nav-link" href="<%= item[:url] %>"><%= item[:label] %></a>
+                      </li>
+                    <% end %>
+                </div>
+              </nav>
+            </div>
+          </div>
+        </div>
+        <!-- /Navegacion -->
+      </div>
+    </div>
   </div>
-  <div class="textlogo">
-    <h4><%= current_site.the_title %></h4>
-  </div>
-</div>
-<!-- close Logo -->
-
-<!-- segundo navbar -->
-<nav class="my-nav navbar-right navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-  <div class=" collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <% cama_menu_parse_items(current_site.nav_menus.find_by_slug('gel_main_menu').children).each do |item| %>
-          <li class="nav-item active">
-            <a class="nav-link" href="<%= item[:url] %>"><%= item[:label] %></a>
-          </li>
-      <% end %>
-    </ul>
-  </div>
-</nav>
-
-<!-- close second navbar -->
+</header>
+<!-- /header -->
