@@ -106,4 +106,8 @@ module Themes::GobiernoLinea::MainHelper
       ]
     }
   end
+
+  def my_theme_admin_before_load
+    append_asset_libraries({"my_tinymce"=> { js: [theme_asset("js/my_tinymce_templates")]}})
+  end
 end

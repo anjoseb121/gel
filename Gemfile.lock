@@ -6,6 +6,13 @@ GIT
       camaleon_cms
 
 GIT
+  remote: https://github.com/owen2345/Camaleon-Tinymce-Templates.git
+  revision: 5ac960fbbec416571c40c5d3d671a68759fa1e30
+  specs:
+    cama_tinymce_template (0.0.1)
+      rails
+
+GIT
   remote: https://github.com/tisolutions/camaleon-cms.git
   revision: 73857e919307377fff90121123be2d3d351acbab
   branch: master
@@ -247,6 +254,7 @@ PLATFORMS
 
 DEPENDENCIES
   byebug
+  cama_tinymce_template!
   camaleon_cms!
   camaleon_sitemap_customizer!
   capybara (~> 2.13)
