@@ -38,6 +38,7 @@
 #app-header .navegacion a {
   font-size: 10px;
   color: white;
+  padding: 0 7px;
 }
 
 #app-header .navegacion a:hover {
@@ -53,7 +54,6 @@
 #app-busqueda {
   height: 280px;
   width: 100%;
-  background-image: url("../assets/bgimage.jpg");
   background-size: cover;
   background-position: center;
 }
@@ -61,11 +61,16 @@
 #app-noticias {
   height: 480px;
   width: 100%;
-  background-image: url("../assets/tapiz.jpg");
+  background-image: url("../images/tapiz.jpg");
+}
+
+#app-noticias .btn-outline-dark {
+  margin-left: 220px;
 }
 
 #app-noticias .carousel {
-  width: 80%;
+  width: 50%;
+  margin-top: 65px;
 }
 
 #app-noticias .carousel img {
@@ -134,12 +139,12 @@
 }
 
 #app-tramites {
-  height: 460px;
+  height: 350px;
   width: 100%;
 }
 
 #app-tramites h4 {
-  font-size: 18px;
+  font-size: 28px;
 }
 
 #app-tramites .jumbotron {
@@ -147,13 +152,12 @@
   width: 90%;
 }
 
-#app-tramites .nav-pills a {
-  color: rgb(4, 57, 80);
-  font-size: 12px;
+#app-tramites .jumbotron p {
+  font-size: 16px;
 }
 
-#app-tramites .jumbotron p {
-  font-size: 10px;
+#app-tramites .fa {
+  font-size: 28px;
 }
 
 
