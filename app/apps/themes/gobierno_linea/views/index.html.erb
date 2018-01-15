@@ -94,22 +94,36 @@
       <div class="col-6 tramites text-center mt-5">
         <h4>Trámites y servicios</h4>
         <% services = current_theme.the_fields_grouped(['gel_services_title', 'gel_services_image', 'gel_services_descr', 'gel_services_url']) %>
-        <div class="containerdos">
+        <div class="jumbotron jumbotron-fluid mt-5">
+        <div class="container">
           <div class="row">
-            <% services.each_with_index do |item, index| %>
-              <div class="carduno">
-                <img class="card-img-top" height="200" src="<%= item['gel_services_image'].first %>" width="50" height="50" alt="<%= item['gel_services_title'].first %>">
-                <div class="card-body">
-                  <h4 class="card-title">
-                    <%= item['gel_services_title'].first %>
-                  </h4>
-                  <p class="card-text">
-                    <%= item['gel_services_descr'].first %>
-                  </p>
-                  <a href="<%= item['gel_services_url'].first %>" class="btn btn-primary">Go</a>
-                </div>
-              </div>
-            <% end %>
+            <div class="col-6 mt-3">
+              <a href="#">
+                <i class="fa fa-home" aria-hidden="true"></i>
+              </a>
+              <p>Impuesto predial</p>
+            </div>
+            <div class="col-6 mt-3">
+              <a href="#">
+                <i class="fa fa-car" aria-hidden="true"></i>
+              </a>
+              <p>Impuesto vehicular</p>
+            </div>
+            <div class="col-6 mt-3">
+              <a href="#">
+                <i class="fa fa-industry" aria-hidden="true"></i>
+              </a>
+              <p>Industria y comercio</p>
+            </div>
+            <div class="col-6 mt-3">
+              <a href="#">
+                <i class="fa fa-desktop" aria-hidden="true"></i>
+              </a>
+              <p>Consultar tramite</p>
+            </div>
+          </div>
+        </div>
+      </div>
         </div>
       </div>
 
