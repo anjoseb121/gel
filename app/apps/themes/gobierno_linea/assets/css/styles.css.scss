@@ -38,6 +38,7 @@
 #app-header .navegacion a {
   font-size: 10px;
   color: white;
+  padding: 0 7px;
 }
 
 #app-header .navegacion a:hover {
@@ -53,7 +54,7 @@
 #app-busqueda {
   height: 280px;
   width: 100%;
-  background-image: url("../assets/bgimage.jpg");
+  background-image: url("../images/bgimage.jpg");
   background-size: cover;
   background-position: center;
 }
@@ -61,11 +62,12 @@
 #app-noticias {
   height: 480px;
   width: 100%;
-  background-image: url("../assets/tapiz.jpg");
+  background-image: url("../images/tapiz.jpg");
 }
 
 #app-noticias .carousel {
-  width: 80%;
+  width: 50%;
+  margin-top: 65px;
 }
 
 #app-noticias .carousel img {
