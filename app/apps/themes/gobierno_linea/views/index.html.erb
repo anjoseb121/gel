@@ -51,7 +51,7 @@
       <div class="col-6">
         <div class="container">
           <div class="row">
-            <h3 class="mt-3">
+            <h3 class="mt-3 ml-3">
               <strong>Noticias</strong>
             </h3>
           </div>
@@ -66,17 +66,10 @@
               </div>
             <% end %> 
             <div class="col-12 col-sm-6 img-left">
-              <div class="relative">
-                <img class="img-fluid" src="http://www.todopaisajes.com/Imagenes/paisaje-de-flores.jpg" alt="img noticia">
-                <a href="#" class="badge-corner badge-success"><span>27 dic</span></a>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-              </div>
+             
             </div>
             <div class="col-12 col-sm-6 img-right">
-              <img class="img-fluid" src="http://www.todopaisajes.com/Imagenes/paisaje-de-flores.jpg" alt="img noticia">
-              <a href="#" class="badge-corner badge-success"><span>27 dic</span></a>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </div>
+              
           </div>
           <div class="row">
             <div class="col-12 text-center">
@@ -101,29 +94,42 @@
       <div class="col-6 tramites text-center mt-5">
         <h4>Trámites y servicios</h4>
         <% services = current_theme.the_fields_grouped(['gel_services_title', 'gel_services_image', 'gel_services_descr', 'gel_services_url']) %>
-        <div class="containerdos">
+        <div class="jumbotron jumbotron-fluid mt-5">
+        <div class="container">
           <div class="row">
-            <% services.each_with_index do |item, index| %>
-              <div class="carduno">
-                <img class="card-img-top" height="200" src="<%= item['gel_services_image'].first %>" width="50" height="50" alt="<%= item['gel_services_title'].first %>">
-                <div class="card-body">
-                  <h4 class="card-title">
-                    <%= item['gel_services_title'].first %>
-                  </h4>
-                  <p class="card-text">
-                    <%= item['gel_services_descr'].first %>
-                  </p>
-                  <a href="<%= item['gel_services_url'].first %>" class="btn btn-primary">Go</a>
-                </div>
-              </div>
-            <% end %>
+            <div class="col-6 mt-3">
+              <a href="#">
+                <i class="fa fa-home" aria-hidden="true"></i>
+              </a>
+              <p>Impuesto predial</p>
+            </div>
+            <div class="col-6 mt-3">
+              <a href="#">
+                <i class="fa fa-car" aria-hidden="true"></i>
+              </a>
+              <p>Impuesto vehicular</p>
+            </div>
+            <div class="col-6 mt-3">
+              <a href="#">
+                <i class="fa fa-industry" aria-hidden="true"></i>
+              </a>
+              <p>Industria y comercio</p>
+            </div>
+            <div class="col-6 mt-3">
+              <a href="#">
+                <i class="fa fa-desktop" aria-hidden="true"></i>
+              </a>
+              <p>Consultar tramite</p>
+            </div>
+          </div>
+        </div>
+      </div>
         </div>
       </div>
 
     </div>
   </div>
 </section>
-<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 <!-- /Seccion de tramites -->
 <!-- Seccion conocenos -->
 <section id="app-conocenos">
@@ -264,19 +270,19 @@
     <div class="col-6">
       <div class="row justify-content-between mt-3">
         <div class="col-2">
-          <img src="./assets/mpg.png" alt="MPG logo">
+          <img src="../assets/images/mpg.png" alt="MPG logo">
         </div>
         <div class="col-2">
-          <img src="./assets/sirvo_mi_pais.png" alt="Sirvo mi pais logo">
+          <img src="../assets/images/sirvo_mi_pais.png" alt="Sirvo mi pais logo">
         </div>
         <div class="col-2">
-          <img src="./assets/no_filas.png" alt="No Filas logo">
+          <img src="../assets/images/no_filas.png" alt="No Filas logo">
         </div>
         <div class="col-2">
-          <img src="./assets/colombia_compra_eficiente.png" alt="colombia compra eficiente logo">
+          <img src="../assets/images/colombia_compra_eficiente.png" alt="colombia compra eficiente logo">
         </div>
         <div class="col-2">
-          <img src="./assets/urna_cristal.png" alt="urna cristal logo">
+          <img src="../assets/images/urna_cristal.png" alt="urna cristal logo">
         </div>
       </div>
     </div>
