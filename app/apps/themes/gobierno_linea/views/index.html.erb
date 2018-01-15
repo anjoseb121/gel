@@ -75,6 +75,11 @@
             <div class="col-12 text-center">
               <button class="btn btn-outline-dark">Más noticias</button>
             </div>
+            <div class="row">
+              <div class="col-12 text-center">
+                <button class="btn btn-outline-dark">Más noticias</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -131,91 +136,7 @@
   </div>
 </section>
 <!-- /Seccion de tramites -->
-<!-- Seccion conocenos -->
-<section id="app-conocenos">
-  <div class="container">
-    <div class="row">
-      <div class="col-5">
-        <div class="row mt-5">
-          <div class="col-4 yotoco-imagen">
-            <img src="./assets/paisaje.jpg" alt="Yotoco imagen 1">
-          </div>
-          <div class="col-4 yotoco-imagen">
-            <img src="./assets/paisaje.jpg" alt="Yotoco imagen 1">
-          </div>
-          <div class="col-4 yotoco-imagen">
-            <img src="./assets/paisaje.jpg" alt="Yotoco imagen 1">
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-4 yotoco-imagen">
-            <img src="./assets/paisaje.jpg" alt="Yotoco imagen 1">
-          </div>
-          <div class="col-4 yotoco-imagen">
-            <img src="./assets/paisaje.jpg" alt="Yotoco imagen 1">
-          </div>
-          <div class="col-4 yotoco-imagen">
-            <img src="./assets/paisaje.jpg" alt="Yotoco imagen 1">
-          </div>
-        </div>
-        <div class="row mt-5">
-          <div class="col-6 mt-5 pl-5">
-            <button class="btn btn-outline-success">Galeria del municipio</button>
-          </div>
-          <div class="col-6 mt-5">
-            <button class="btn btn-outline-success">Galeria del municipio</button>
-          </div>
-        </div>
 
-      </div>
-      <div class="col-6">
-        <div class="row mt-1">
-          <div class="col mt-5 ml-5">
-            <h4 class="text-success">Conoce nuestro municipio</h4>
-            <div class="text-white conocenos-yotoco">
-              <p>
-                <small>Yotoco, fue fundado el 15 de Septiembre de 1622, por el Capitán Diego Rengifo Salazar, aprovechando el
-                  asiento de la familia de los Yotocoes o Yotocos, en 1858 adquiere la categoría de aldea, y en 1864
-                  recobra la calidad distrital y es bautizado con el nombre de Sucre, nombre que dejó de figurar en la
-                  división territorial que se otorgó al Municipio en 1868. En 1908 por medio del Decreto especial # 455,
-                  se anexo al Distrito de Buga. Con la Ley 23 de 1912, Yotoco fue anexado a Cali. Por Ultimo en cumplimiento
-                  de la Ley l28 de 1912, Volvió a pertenecer al Distrito de Buga hasta que fue eregido Municipio. </small>
-              </p>
-              <p>
-                <small>Extensión total: 873 Kilimetros Km2</small>
-              </p>
-              <p>
-                <small>Altitud de la cabecera municipal(metros sobre niveldel mar): 972 MTS</small>
-              </p>
-              <p>
-                <small>Temperatura media: 24º Cº C</small>
-              </p>
-              <p>
-                <small>Distancia de referencia: 56.4 kme la ciudad de Cali.</small>
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="row conocenos-mas">
-          <div class="col">
-            <ul class="list-inline">
-              <li class="list-inline-item">
-                <a href="#">&#9679; Vias de comunicaciones</a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">&#9679; Ecologia</a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">&#9679; Economia</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- /Seccion conocenos -->
 </div>
 <!-- /Segundo viewport -->
 <!-- Tercer viewport -->
@@ -265,25 +186,18 @@
 <!-- /Seccion canales -->
 
 <!-- Seccion colaboradores -->
+<% services = current_theme.the_fields_grouped(['gel_collaborators_title', 'gel_collaborators_image', 'gel_collaborators_url']) %>
 <section id="app-colaboradores">
   <div class="row justify-content-center">
     <div class="col-6">
       <div class="row justify-content-between mt-3">
-        <div class="col-2">
-          <img src="../assets/images/mpg.png" alt="MPG logo">
-        </div>
-        <div class="col-2">
-          <img src="../assets/images/sirvo_mi_pais.png" alt="Sirvo mi pais logo">
-        </div>
-        <div class="col-2">
-          <img src="../assets/images/no_filas.png" alt="No Filas logo">
-        </div>
-        <div class="col-2">
-          <img src="../assets/images/colombia_compra_eficiente.png" alt="colombia compra eficiente logo">
-        </div>
-        <div class="col-2">
-          <img src="../assets/images/urna_cristal.png" alt="urna cristal logo">
-        </div>
+        <% services.each_with_index do |item, index| %>
+          <div class="col-2">
+            <a href="<%= item['gel_collaborators_url'].first %>" target="_blank">
+              <%= image_tag item['gel_collaborators_image'].first %>
+            </a>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
