@@ -9,7 +9,6 @@
   </div>
 </section>
 <!-- /Seccion de busqueda -->
-
 <!-- Seccion de noticias -->
 <section id="app-noticias">
   <div class="container">
@@ -48,32 +47,37 @@
         </a>
       </div>
       <!-- /Carrusel -->
-
       <!-- Noticias -->
       <div class="col-6">
         <div class="container">
           <div class="row">
-            <div class="col-3 mt-3">
-              <strong>
-                <h3>Noticias</h3>
-              </strong>
-            </div>
+            <h3 class="mt-3">
+              <strong>Noticias</strong>
+            </h3>
           </div>
-          <br>
-          <div class="row noticias">
+          <div class="row mt-2">
             <% current_site.the_posts(current_theme.get_field("recent_post_type")).latest.limit(current_theme.get_field("home_qty")).decorate.each do |post| %>
-              <div class="col-6">
-                <!-- PORTFOLIO ITEM -->
-                <div class="col-lg-4">
-                  <a class="zoom green" href="<%= post.the_url %>" title="<%= post.the_title %>" >
-                    <img width="400" height="300" src="<%= post.the_thumb_url%>" class="attachment-post-thumbnail wp-post-image" alt="post image" />
-                  </a>
-                  <span class="badge badge-secondary bg-success">
-                    <strong><%= post.the_title %></strong>
-                  </span>
-                </div> <!-- /col -->
+              <div class="col-12 col-sm-6 img-left">
+                <div class="relative">
+                  <img class="img-fluid" src="<%= post.the_thumb_url%>" alt="img">
+                  <a href="<%= post.the_url %>" class="badge-corner badge-success"><span>27 dic</span></a>
+                  <p><%= post.the_title %></p>
+                </div>
               </div>
             <% end %> 
+            <div class="col-12 col-sm-6 img-left">
+              <div class="relative">
+                <img class="img-fluid" src="http://www.todopaisajes.com/Imagenes/paisaje-de-flores.jpg" alt="img noticia">
+                <a href="#" class="badge-corner badge-success"><span>27 dic</span></a>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 img-right">
+              <img class="img-fluid" src="http://www.todopaisajes.com/Imagenes/paisaje-de-flores.jpg" alt="img noticia">
+              <a href="#" class="badge-corner badge-success"><span>27 dic</span></a>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+          </div>
           <div class="row">
             <div class="col-12 text-center">
               <button class="btn btn-outline-dark">Más noticias</button>
@@ -85,7 +89,6 @@
     </div>
   </div>
 </section>
-<!-- Seccion de noticias -->
 </div>
 <!-- /Primer viewport -->
 
@@ -97,133 +100,30 @@
     <div class="row">
       <div class="col-6 tramites text-center mt-5">
         <h4>Trámites y servicios</h4>
-        <div class="row">
-          <div class="col">
-            <div id="carouselIndicators2" class="carousel slide" data-ride="carousel" style="width: 300px; margin: 0 auto">
-              <ol class="carousel-indicators">
-                <li data-target="#carouselIndicators2" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselIndicators2" data-slide-to="1"></li>
-                <li data-target="#carouselIndicators2" data-slide-to="2"></li>
-              </ol>
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <div class="impuestos">
-                    <div class="row text-center">
-                      <div class="col-6 mt-3">
-                        <a href="#">
-                          <i class="fa fa-home" aria-hidden="true"></i>
-                        </a>
-                        <p>Impuesto predial</p>
-                      </div>
-                      <div class="col-6 mt-3">
-                        <a href="#">
-                          <i class="fa fa-car" aria-hidden="true"></i>
-                        </a>
-                        <p>Impuesto vehicular</p>
-                      </div>
-                      <div class="col-6 mt-3">
-                        <a href="#">
-                          <i class="fa fa-industry" aria-hidden="true"></i>
-                        </a>
-                        <p>Industria y comercio</p>
-                      </div>
-                      <div class="col-6 mt-3">
-                        <a href="#">
-                          <i class="fa fa-desktop" aria-hidden="true"></i>
-                        </a>
-                        <p>Consultar tramite</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="carousel-item">
-                  <div class="impuestos">
-                    <div class="row text-center">
-                      <div class="col-6 mt-3">
-                        <a href="#">
-                            <i class="fa fa-id-card-o" aria-hidden="true"></i>
-                        </a>
-                        <p>Expedición de duplicados de documentos de transito</p>
-                      </div>
-                      <div class="col-6 mt-3">
-                        <a href="#">
-                          <i class="fa fa-car" aria-hidden="true"></i>
-                        </a>
-                        <p>Traspaso de vehiculos</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="carousel-item">
-                  <div class="impuestos">
-                    <div class="row text-center">
-                      <div class="col-6 mt-3">
-                        <a href="#">
-                            <i class="fa fa-building-o" aria-hidden="true"></i>
-                        </a>
-                        <p>Revisión de estrato en primera instancia</p>
-                      </div>
-                      <div class="col-6 mt-3">
-                        <a href="#">
-                            <i class="fa fa-money" aria-hidden="true"></i>
-                        </a>
-                        <p>Solicitud de verificación de estado de seguridad social</p>
-                      </div>
-                    </div>
-                  </div>
+        <% services = current_theme.the_fields_grouped(['gel_services_title', 'gel_services_image', 'gel_services_descr', 'gel_services_url']) %>
+        <div class="containerdos">
+          <div class="row">
+            <% services.each_with_index do |item, index| %>
+              <div class="carduno">
+                <img class="card-img-top" height="200" src="<%= item['gel_services_image'].first %>" width="50" height="50" alt="<%= item['gel_services_title'].first %>">
+                <div class="card-body">
+                  <h4 class="card-title">
+                    <%= item['gel_services_title'].first %>
+                  </h4>
+                  <p class="card-text">
+                    <%= item['gel_services_descr'].first %>
+                  </p>
+                  <a href="<%= item['gel_services_url'].first %>" class="btn btn-primary">Go</a>
                 </div>
               </div>
-            </div>
-          </div>
+            <% end %>
         </div>
       </div>
 
-      <div class="col-6 ayuda">
-        <div class="row mt-5 ml-5">
-          <div class="col mt-5">
-            <h6>¿Cómo podemos ayudarlo?</h6>
-          </div>
-        </div>
-        <div class="row ml-5">
-          <div class="col-5 text-justify">
-            <p>
-              <small>Encuentre la información de todosos tramites y servicios de la entidad.</small>
-            </p>
-          </div>
-        </div>
-        <div class="row ml-5">
-          <div class="col-1">
-            <ul class="list-unstyled">
-              <li>
-                <a href="#">
-                  <i class="fa fa-comments-o" aria-hidden="true"></i>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <i class="fa fa-question" aria-hidden="true"></i>
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div class="col">
-            <ul class="list-unstyled">
-              <li>
-                <small>Chat de atencion en linea</small>
-              </li>
-              <li>
-                <small>Preguntas frecuentes</small>
-              </li>
-            </ul>
-          </div>
-          <div class="col">
-            <img src="./assets/agent.png" alt="Agente">
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </section>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 <!-- /Seccion de tramites -->
 <!-- Seccion conocenos -->
 <section id="app-conocenos">

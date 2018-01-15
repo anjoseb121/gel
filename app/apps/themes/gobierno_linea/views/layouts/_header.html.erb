@@ -25,22 +25,14 @@
         <!-- Navegacion -->
         <div class="col navegacion mt-2">
           <div class="row">
-            <div class="col">
-              <nav class="navbar navbar-expand-lg navbar-default text-right">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                  aria-expanded="false" aria-label="Toggle navigation">
-                  <i class="fa fa-bars" aria-hidden="true"></i>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                  <ul class="navbar-nav">
-                    <% cama_menu_parse_items(current_site.nav_menus.find_by_slug('gel_main_menu').children).each do |item| %>
-                      <li class="nav-item active align-self-end">
-                        <a class="nav-link" href="<%= item[:url] %>"><%= item[:label] %></a>
-                      </li>
-                    <% end %>
-                </div>
-              </nav>
+            <div class="col-11 offset-1">
+              <ul class="nav nav-pills">
+                <% cama_menu_parse_items(current_site.nav_menus.find_by_slug('gel_main_menu').children).each do |item| %>
+                  <li class="nav-item">
+                    <a class="nav-link <%= 'active' if site_current_path == item[:url] %>" href="<%= item[:url] %>"><%= item[:label] %></a>
+                  </li>
+                <% end %>
+              </ul>
             </div>
           </div>
         </div>
