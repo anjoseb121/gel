@@ -56,7 +56,7 @@
             </h3>
           </div>
           <div class="row mt-2">
-            <% current_site.the_posts(current_theme.get_field("recent_post_type")).latest.limit(current_theme.get_field("home_qty")).decorate.each do |post| %>
+            <% current_site.the_posts(current_theme.get_field("recent_post_type")).latest.limit(4).decorate.each do |post| %>
               <div class="col-12 col-sm-6 img-left">
                 <div class="relative">
                   <img class="img-fluid" src="<%= post.the_thumb_url%>" alt="img">
@@ -69,16 +69,10 @@
              
             </div>
             <div class="col-12 col-sm-6 img-right">
-              
           </div>
           <div class="row">
             <div class="col-12 text-center">
               <button class="btn btn-outline-dark">Más noticias</button>
-            </div>
-            <div class="row">
-              <div class="col-12 text-center">
-                <button class="btn btn-outline-dark">Más noticias</button>
-              </div>
             </div>
           </div>
         </div>
