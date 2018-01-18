@@ -1,5 +1,5 @@
 <!-- Seccion de busqueda -->
-<section id="app-busqueda">
+<section id="app-busqueda" style="background: url(<%= current_theme.the_field("main_image") %>)">
   <div class="container">
     <div class= "row justify-content-center">
       <div class="col-8 mt-5">
@@ -93,32 +93,23 @@
       <div class="col-6 tramites text-center mt-5">
         <h4>Trámites y servicios</h4>
         <% services = current_theme.the_fields_grouped(['gel_services_title', 'gel_services_image', 'gel_services_descr', 'gel_services_url']) %>
+        <% services = services.take(3) %>
         <div class="jumbotron jumbotron-fluid mt-5">
         <div class="container">
           <div class="row">
+            <% services.each_with_index do |item, index| %>
+              <div class="col-6 mt-3">
+                <a href="<%= item['gel_services_url'].first %>" target="_blank">
+                  <img src="<%= item['gel_services_image'].first %>" width="50" height="50" alt="<%= item['gel_services_title'].first %>">
+                </a>
+                <p><%= item['gel_services_title'].first %></p>
+              </div>
+            <% end %>
             <div class="col-6 mt-3">
-              <a href="#">
-                <i class="fa fa-home" aria-hidden="true"></i>
+              <a href="/tramites-y-servicios">
+                <i class="fa fa-plus-square" aria-hidden="true"></i>
               </a>
-              <p>Impuesto predial</p>
-            </div>
-            <div class="col-6 mt-3">
-              <a href="#">
-                <i class="fa fa-car" aria-hidden="true"></i>
-              </a>
-              <p>Impuesto vehicular</p>
-            </div>
-            <div class="col-6 mt-3">
-              <a href="#">
-                <i class="fa fa-industry" aria-hidden="true"></i>
-              </a>
-              <p>Industria y comercio</p>
-            </div>
-            <div class="col-6 mt-3">
-              <a href="#">
-                <i class="fa fa-desktop" aria-hidden="true"></i>
-              </a>
-              <p>Consultar tramite</p>
+              <p>Consultar mas tramites</p>
             </div>
           </div>
         </div>
