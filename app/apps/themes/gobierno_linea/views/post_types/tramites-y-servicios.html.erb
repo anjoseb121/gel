@@ -16,3 +16,20 @@
       </div>
     <% end %>
 </div>
+
+<form>
+  First name:<br>
+  <input type="text" name="firstname" value="">
+  <br>
+  Last name:<br>
+  <input type="text" name="lastname" value="">
+  <br><br>
+  <input type="submit" value="Submit">
+</form> 
+
+<%= form_tag(action: "savon_soap", method: "get") do %>
+<p>
+  <%= text_field_tag :zip_code, params[:zip_code] %>
+  <%= submit_tag "Lookup", name: nil %>
+</p>
+<% end %>

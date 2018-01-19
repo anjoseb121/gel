@@ -1,6 +1,6 @@
 module Themes::GobiernoLinea::MainHelper
   def self.included(klass)
-    # klass.helper_method [:my_helper_method] rescue "" # here your methods accessible from views
+    klass.helper_method [:savon_soap] rescue "" # here your methods accessible from views
   end
 
   def gobierno_linea_settings(theme)
@@ -74,6 +74,13 @@ module Themes::GobiernoLinea::MainHelper
   def gobierno_linea_on_uninstall_theme(theme)
     theme.get_field_groups().destroy_all
     theme.destroy
+  end
+
+  require 'savon'
+  def savon_soap
+    puts "HOLAAAAAAAAAAA ENFERMERAAAAAAAAAA"
+    wsdl = 'https://evolution-epx.com:8030/ePxExternalSRV.asmx?wsdl'
+    client = Savon.client(wsdl: wsdl)
   end
 
   def slider_custom_fields(args)
