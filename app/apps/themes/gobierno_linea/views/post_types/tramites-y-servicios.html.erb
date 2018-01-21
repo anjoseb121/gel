@@ -17,19 +17,19 @@
     <% end %>
 </div>
 
-<form>
-  First name:<br>
-  <input type="text" name="firstname" value="">
-  <br>
-  Last name:<br>
-  <input type="text" name="lastname" value="">
-  <br><br>
-  <input type="submit" value="Submit">
-</form> 
-
-<%= form_tag(action: "savon_soap", method: "get") do %>
-<p>
-  <%= text_field_tag :zip_code, params[:zip_code] %>
-  <%= submit_tag "Lookup", name: nil %>
-</p>
+<%= form_tag("/formulario", method: "get") do %>
+  <p>
+    <%= text_field_tag :data, params[:data] %>
+    <%= submit_tag "Lookup", name: nil %>
+  </p>
 <% end %>
+
+<p>
+  <%= raw @formulario %>
+</p>
+hola 
+<% flash[:formulas] %>
+enfermera
+<p>
+  <%= raw @prueba %>
+</p>
