@@ -1,12 +1,5 @@
-<%= form_tag("/formulario", method: "get") do %>
-  <p>
-    <%= text_field_tag :data, params[:data] %>
-    <%= submit_tag "Lookup", name: nil %>
-  </p>
-<% end %>
-
 <% if @formulario %>
   <dl id ="zip_info">
-    <dd><%= @formulario %></dd>
+    <dd><%= @formulario.prueba %></dd>
   </dl>
 <% end %>
