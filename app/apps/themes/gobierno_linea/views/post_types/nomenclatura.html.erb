@@ -1,5 +1,5 @@
 <h1>
-Certificado de estratificación socioeconómica
+Asignación de nomenclatura
 </h1>
 
 <p>
@@ -59,10 +59,10 @@ El resultado de este trámite es obtener el Certificar el estrato socio-económi
     <%= label_tag(:id_number, "Número de documento de identidad ") %>
     <%= text_field_tag :id_number, params[:id_number], :required => true %>
     </br>
-    <%= label_tag(:copy_doc_id, "Copia escaneada del documento de identidad del propietario. *") %>
+    <%= label_tag(:copy_doc_id, "Copia escaneada de la licencia de construcción. * ") %>
     <%= file_field_tag 'copy_doc_id', :required => true %>
     </br>
-    <%= label_tag(:receipt_canceled, "Recibo de pago cancelado") %>
+    <%= label_tag(:receipt_canceled, "Recibo de pago cancelado ") %>
     <%= file_field_tag 'receipt_canceled' %>
 
     </br></br></br>
@@ -70,7 +70,7 @@ El resultado de este trámite es obtener el Certificar el estrato socio-económi
     <%= label_tag(:terms, "Términos y condiciones de uso de datos personales ") %>
     </br></br>
     
-    <%= hidden_field_tag(:code_number, '8008') %> 
+    <%= hidden_field_tag(:code_number, '8010') %> 
     <%= submit_tag "Enviar", name: nil %>
   </p>
 <% end %>

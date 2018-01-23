@@ -1,9 +1,9 @@
 <h1>
-Certificado de estratificación socioeconómica
+Licencia para ampliación o modificación
 </h1>
 
 <p>
-El resultado de este trámite es obtener el Certificar el estrato socio-económico oficial de uno o varios inmuebles residenciales, urbanos y rurales que se encuentren en jurisdicción del Municipio.
+El resultado de este trámite es obtener la autorización previa para adelantar obras de urbanización y parcelación de predios; de construcción en sus modalidades de ampliación y modificación.
 </p>
 
 <%= form_tag("/formulario", method: "post", multipart: true) do %>
@@ -35,6 +35,9 @@ El resultado de este trámite es obtener el Certificar el estrato socio-económi
     Datos del establecimiento e información complementaria del propietario.
     </br></br>
 
+    <%= label_tag(:id_type, "Tipo de licencia a solicitar: * ") %>
+    <%= select_tag(:id_type, options_for_select([['Licencia para ampliación', 1], ['Licencia para modificación', 2]])) %>
+    </br>
     <%= label_tag(:address, "Dirección del predio ") %>
     <%= text_field_tag :address, params[:address] %>
     </br>
@@ -53,16 +56,16 @@ El resultado de este trámite es obtener el Certificar el estrato socio-económi
     <%= label_tag(:urbanization, "Urbanización") %>
     <%= text_field_tag :urbanization, params[:urbanization] %>
     </br>
-     <%= label_tag(:id_type, "Tipo de documento de identidad  ") %>
+    <%= label_tag(:id_type, "Tipo de documento de identidad  ") %>
     <%= select_tag(:id_type, options_for_select(documents_types)) %>
     </br>
     <%= label_tag(:id_number, "Número de documento de identidad ") %>
     <%= text_field_tag :id_number, params[:id_number], :required => true %>
     </br>
-    <%= label_tag(:copy_doc_id, "Copia escaneada del documento de identidad del propietario. *") %>
+    <%= label_tag(:copy_doc_id, "Copia escaneada del certificado de tradición o escritura. * ") %>
     <%= file_field_tag 'copy_doc_id', :required => true %>
     </br>
-    <%= label_tag(:receipt_canceled, "Recibo de pago cancelado") %>
+    <%= label_tag(:receipt_canceled, "Copia escaneada de la licencia de construcción. *") %>
     <%= file_field_tag 'receipt_canceled' %>
 
     </br></br></br>
@@ -70,7 +73,7 @@ El resultado de este trámite es obtener el Certificar el estrato socio-económi
     <%= label_tag(:terms, "Términos y condiciones de uso de datos personales ") %>
     </br></br>
     
-    <%= hidden_field_tag(:code_number, '8008') %> 
+    <%= hidden_field_tag(:code_number, '8011') %> 
     <%= submit_tag "Enviar", name: nil %>
   </p>
 <% end %>
