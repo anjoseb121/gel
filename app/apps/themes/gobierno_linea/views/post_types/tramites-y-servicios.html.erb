@@ -1,3 +1,5 @@
+<h1><%= @post_type.the_title %> <%= @post_type.the_edit_link %></h1>
+
 <% services = current_theme.the_fields_grouped(['gel_services_title', 'gel_services_image', 'gel_services_descr', 'gel_services_url']) %>
 <div class="containerdos">
   <div class="row">
@@ -17,70 +19,27 @@
     <% end %>
 </div>
 
-<%= form_tag("/formulario", method: "post", multipart: true) do %>
-  <p>
-    <%= label_tag(:name, "Primero Nombre:*") %>
-    <%= text_field_tag :name, params[:name] %>
-    </br>
-    <%= label_tag(:second_name, "Segundo Nombre:") %>
-    <%= text_field_tag :second_name, params[:second_name] %>
-    </br>
-    <%= label_tag(:last_name, "Primer Apellido:*") %>
-    <%= text_field_tag :last_name, params[:last_name] %>
-    </br>
-    <%= label_tag(:second_last_name, "Segundo Apellido:") %>
-    <%= text_field_tag :second_last_name, params[:second_last_name] %>
-    </br>
-    <%= label_tag(:mail, "Correo electrónico: *") %>
-    <%= text_field_tag :mail, params[:mail] %>
-    </br>
-    <%= label_tag(:phone, "Número Teléfono Contacto:*") %>
-    <%= text_field_tag :phone, params[:phone] %>
-    </br>
-    <%= label_tag(:description, "Descripción: *") %>
-    <%= text_field_tag :description, params[:description] %>
-    
-    </br>
-    Información básica del establecimiento.
-    Datos del establecimiento e información complementaria del propietario.
-    </br>
+<article id="post_type-view" class="post_type_<%= @post_type.slug %>">
+  <div class="content">
+    <%= raw @post_type.the_content %>
+  </div><br><br>
 
-    <%= label_tag(:address, "Dirección del predio ") %>
-    <%= text_field_tag :address, params[:address] %>
-    </br>
-    <%= label_tag(:neighbor, "Barrio") %>
-    <%= text_field_tag :neighbor, params[:neighbor] %>
-    </br>
-    <%= label_tag(:predial, "Número de predial") %>
-    <%= text_field_tag :predial, params[:predial] %>
-    </br>
-    <%= label_tag(:lot, "Número de Lote ") %>
-    <%= text_field_tag :lot, params[:lot] %>
-    </br>
-    <%= label_tag(:neighborhood, "Manzana") %>
-    <%= text_field_tag :neighborhood, params[:neighborhood] %>
-    </br>
-    <%= label_tag(:urbanization, "Urbanización") %>
-    <%= text_field_tag :urbanization, params[:urbanization] %>
-    </br>
-     <%= label_tag(:id_type, "Tipo de documento de identidad  ") %>
-    <%= select_tag(:id_type, options_for_select([['CC', 'CC'],['CE', 'CE'],['NIT', 'NIT']])) %>
-    </br>
-    <%= label_tag(:id_number, "Número de documento de identidad ") %>
-    <%= text_field_tag :id_number, params[:id_number] %>
-    </br>
-    <%= label_tag(:copy_doc_id, "Copia escaneada del documento de identidad del propietario. *") %>
-    <%= file_field_tag 'copy_doc_id' %>
-    </br>
-    <%= label_tag(:receipt_canceled, "Recibo de pago cancelado") %>
-    <%= file_field_tag 'receipt_canceled' %>
-    </br>
-    <%= check_box_tag(:terms) %>
-    <%= label_tag(:terms, "Términos y condiciones de uso de datos personales ") %>
-    </br>
-    <%= submit_tag "Enviar", name: nil %>
-  </p>
-<% end %>
+  <% if @categories.present? %>
+      <div class="categories_list">
+        <%= render partial: "partials/categories_list", locals: {categories: @categories} %>
+      </div>
+  <% end %>
+
+  <div class="row">
+    <% _tpl = lookup_context.template_exists?("post_types/#{@post_type.the_slug}/post_list_item", nil, true) ? "post_types/#{@post_type.the_slug}/post_list_item" : 'partials/post_list_item' %>
+    <% @posts.each_with_index do |post, index| %>
+        <%#= raw "<div class='clearfix'></div>" if index%3 == 0 && index > 0 %>
+        <%= render partial: _tpl, locals: {post: post.decorate, index: index} %>
+    <% end %>
+  </div>
+  <%= content_tag("div", raw(ct('no_contents_found', default: 'No contents found.')), class: "alert alert-warning") if @posts.empty? %>
+  <%= will_paginate @posts, renderer: BootstrapPagination::Rails if @posts.present? %>
+</article>
 
 <p>
   <%= raw @formulario %>

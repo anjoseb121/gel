@@ -14,13 +14,15 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy"
     crossorigin="anonymous">
-    <style>
+
+  <style>
+    
     .main-color {
-      background-color: rgb(4, 57, 80);
+      background-color: <%= current_theme.the_field("main_color") %>;
     }
 
     .secondary-color {
-      color: rgb(243, 165, 54);
+      color: <%= current_theme.the_field("secondary_color") %>;
     }
 
     .text-color {
@@ -28,41 +30,35 @@
     }
 
     /* Color "activo" del navbar */
-
     #app-header .nav-pills .nav-link.active,
     .nav-pills .show>.nav-link {
-      background-color: rgb(11, 29, 80);
+      background-color: <%= current_theme.the_field("secondary_color") %>;
     }
 
     /* Color de las esquinas badge */
-
     #app-noticias .badge-corner {
-      border-top-color: #9cd70e;
+      border-top-color: <%= current_theme.the_field("secondary_color") %>;
     }
 
     /* Color de las letras en los tramites */
-
     #app-tramites .nav-pills a {
       color: rgb(4, 57, 80);
       font-size: 16px;
     }
 
     /* Color "activo" de las pestañas de tramites y servicios */
-
     #app-tramites .nav-pills .nav-link.active,
     .nav-pills .show>.nav-link {
       color: white;
       background-color: rgb(4, 57, 80);
     }
 
-    /* Color del bolrde divisor de la seccion de tramites */
-
+    /* Color del borde divisor de la seccion de tramites */
     #app-tramites .tramites {
       border-right: 1px solid rgb(4, 57, 80);
     }
 
     /* Color de las letras en la seccion tramites */
-
     #app-tramites .ayuda h6,
     #app-tramites .ayuda small,
     #app-tramites .ayuda i {
@@ -70,13 +66,11 @@
     }
 
     /* Color de fondo de la seccion "conocenos" */
-
     #app-conocenos {
       background-color: rgb(92, 91, 91);
     }
 
     /* color de los links de la seccion conocenos */
-
     #app-conocenos .conocenos-mas li a {
       color: rgb(20, 167, 20);
     }

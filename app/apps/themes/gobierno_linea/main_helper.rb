@@ -15,7 +15,9 @@ module Themes::GobiernoLinea::MainHelper
       {name: 'Alcaldía', description: 'Alcaldía', options: {has_category: false, has_tags: false, not_deleted: true, has_summary: false, has_content: true, has_comments: false, has_picture: true, has_template: true, has_layout: true}},
       {name: 'Atencion al Ciudadano', description: 'Atencion al ciudadano', options: {has_category: false, has_tags: false, not_deleted: true, has_summary: false, has_content: true, has_comments: false, has_picture: true, has_template: true, has_layout: true}},
       {name: 'Tramites y Servicios', description: 'Tramites y Servicios', options: {has_category: false, has_tags: false, not_deleted: true, has_summary: false, has_content: true, has_comments: false, has_picture: true, has_template: true, has_layout: true}},
-      {name: 'Participación Ciudadana', description: 'Participación Ciudadana', options: {has_category: false, has_tags: false, not_deleted: true, has_summary: false, has_content: true, has_comments: false, has_picture: true, has_template: true, has_layout: true}}
+      {name: 'Participación Ciudadana', description: 'Participación Ciudadana', options: {has_category: false, has_tags: false, not_deleted: true, has_summary: false, has_content: true, has_comments: false, has_picture: true, has_template: true, has_layout: true}},
+      
+      {name: 'Estratificación Socioeconómica', description: 'Certificado de estratificación socioeconómica', options: {has_category: false, has_tags: false, not_deleted: true, has_summary: false, has_content: true, has_comments: false, has_picture: true, has_template: true, has_layout: true}}
     ]
     default_post_type.each do |pt|
       model_pt = theme.site.post_types.create({name: pt[:name], slug: pt[:name].to_s.parameterize, description: pt[:description], data_options: pt[:options]})
@@ -40,6 +42,12 @@ module Themes::GobiernoLinea::MainHelper
         end
       end
     end
+
+    # Main Color
+    theme.add_field({"name"=>"Color principal", "slug"=>"main_color"},{field_key: "colorpicker", color_format: "rgb", default_value: "rgb(4,57,80)"})
+
+    # Secondary Color
+    theme.add_field({"name"=>"Color segundario", "slug"=>"secondary_color"},{field_key: "colorpicker", color_format: "rgb", default_value: "rgb(243,165,54)"})
 
     # Main image
     theme.add_field({"name"=>"Imagen principal", "slug"=>"main_image"},{field_key: "image"})
@@ -74,13 +82,6 @@ module Themes::GobiernoLinea::MainHelper
   def gobierno_linea_on_uninstall_theme(theme)
     theme.get_field_groups().destroy_all
     theme.destroy
-  end
-
-  require 'savon'
-  def savon_soap
-    puts "HOLAAAAAAAAAAA ENFERMERAAAAAAAAAA"
-    wsdl = 'https://evolution-epx.com:8030/ePxExternalSRV.asmx?wsdl'
-    client = Savon.client(wsdl: wsdl)
   end
 
   def slider_custom_fields(args)
