@@ -1,34 +1,35 @@
 <h1>
-Certificado de estratificación socioeconómica
+Certificado de división horizontal
 </h1>
 
 <p>
-El resultado de este trámite es obtener el Certificar el estrato socio-económico oficial de uno o varios inmuebles residenciales, urbanos y rurales que se encuentren en jurisdicción del Municipio.
+El resultado de este tramite es obtener la aprobación de los planos de alinderamiento, cuadros de áreas o proyecto de división entre bienes privados y bienes comunes de la propiedad horizontal. Este se emite para certificar una licencia ya aprobada o ejecutada
 </p>
+
 
 <%= form_tag("/formulario", method: "post", multipart: true) do %>
   <p>
     <h3>Información básica de la solicitud</h3>
     <%= label_tag(:name, "Primero Nombre:*") %>
-    <%= text_field_tag :name, params[:name], :required => true %>
+    <%= text_field_tag :name, params[:name] %>
     </br>
     <%= label_tag(:second_name, "Segundo Nombre:") %>
     <%= text_field_tag :second_name, params[:second_name] %>
     </br>
     <%= label_tag(:last_name, "Primer Apellido:*") %>
-    <%= text_field_tag :last_name, params[:last_name], :required => true %>
+    <%= text_field_tag :last_name, params[:last_name] %>
     </br>
     <%= label_tag(:second_last_name, "Segundo Apellido:") %>
     <%= text_field_tag :second_last_name, params[:second_last_name] %>
     </br>
     <%= label_tag(:mail, "Correo electrónico: *") %>
-    <%= text_field_tag :mail, params[:mail], :required => true %>
+    <%= text_field_tag :mail, params[:mail] %>
     </br>
     <%= label_tag(:phone, "Número Teléfono Contacto:*") %>
-    <%= text_field_tag :phone, params[:phone], :required => true %>
+    <%= text_field_tag :phone, params[:phone] %>
     </br>
     <%= label_tag(:description, "Descripción: *") %>
-    <%= text_field_tag :description, params[:description], :required => true %>
+    <%= text_field_tag :description, params[:description] %>
     
     </br></br></br>
     <h3>Información básica del establecimiento.</h3>
@@ -53,24 +54,35 @@ El resultado de este trámite es obtener el Certificar el estrato socio-económi
     <%= label_tag(:urbanization, "Urbanización") %>
     <%= text_field_tag :urbanization, params[:urbanization] %>
     </br>
+    <%= label_tag(:registration, "Número de matrícula inmobiliaria ") %>
+    <%= text_field_tag :registration, params[:registration] %>
+    </br>
      <%= label_tag(:id_type, "Tipo de documento de identidad  ") %>
     <%= select_tag(:id_type, options_for_select(documents_types)) %>
     </br>
     <%= label_tag(:id_number, "Número de documento de identidad ") %>
     <%= text_field_tag :id_number, params[:id_number], :required => true %>
     </br>
-    <%= label_tag(:copy_doc_id, "Copia escaneada del documento de identidad del propietario. *") %>
-    <%= file_field_tag 'copy_doc_id', :required => true %>
+    <%= label_tag(:copy_doc_id, "Copia de la escritura * ") %>
+    <%= file_field_tag 'copy_doc_id' %>
     </br>
-    <%= label_tag(:receipt_canceled, "Recibo de pago cancelado") %>
+    <%= label_tag(:receipt_canceled, "Planos aprobados *") %>
     <%= file_field_tag 'receipt_canceled' %>
+    </br>
+    <%= label_tag(:third_document, "Certificado de tradición *") %>
+    <%= file_field_tag 'third_document' %>
+    </br>
+    <%= label_tag(:fourth_document, "Memoria descriptiva * ") %>
+    <%= file_field_tag 'fourth_document' %>
+    </br>
+    <%= label_tag(:fifth_document, "Recibo de pago cancelado * ") %>
+    <%= file_field_tag 'fifth_document' %>
 
     </br></br></br>
     <%= check_box_tag(:terms) %>
     <%= label_tag(:terms, "Términos y condiciones de uso de datos personales ") %>
-    </br></br>
-    
-    <%= hidden_field_tag(:code_number, '8008') %> 
+    </br></br> 
+    <%= hidden_field_tag(:code_number, '8009') %> 
     <%= submit_tag "Enviar", name: nil %>
   </p>
 <% end %>

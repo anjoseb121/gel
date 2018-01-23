@@ -22,19 +22,24 @@ class Formulario
     data_file = data_wsdl[:copy_doc_id]
     encoded_string = encode_file_base64(data_file.tempfile)
 
+    secundary_file = data_wsdl[:receipt_canceled] 
+    encoded_secundary_file = secundary_file ? encode_file_base64(secundary_file.tempfile) : ''
+
     wsdl = 'https://evolution-epx.com:8027/ePxExternalSRV.asmx?wsdl'
     client = Savon.client(wsdl: wsdl)
     message_data = {
-      :type_document => 8008, 
+      :type_document => data_wsdl[:code_number], 
       :keys => [-1, -2, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
       :values => [4, 4.1, name, surname, email, phone, description, address, neighbor, predial, lot, neighborhood, urbanization, id_type, id_number],
       :doc_file => encoded_string,
       :doc_fileName => data_file.original_filename,
       :annex_files => {
-        # "Annex" => {
-        #   "FileName" => [],
-        #   "Base64File" => [] 
-        # }
+        "Annex" => [
+          {
+            "FileName" => secundary_file ? secundary_file.original_filename : '',
+            "Base64File" => encoded_secundary_file
+          }
+        ]
       },
       :area_Code => 1001,
       :sender => {

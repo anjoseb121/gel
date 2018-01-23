@@ -1,10 +1,23 @@
 module Themes::GobiernoLinea::MainHelper
   def self.included(klass)
-    klass.helper_method [:savon_soap] rescue "" # here your methods accessible from views
+    klass.helper_method [:documents_types] rescue "" # here your methods accessible from views
   end
 
   def gobierno_linea_settings(theme)
     # callback to save custom values of fields added in my_theme/views/admin/settings.html.erb
+  end
+
+  def documents_types
+    [
+      ['Cédula de Ciudadanía', 'CC'],
+      ['Cédula Extranjeria', 'CE'],
+      ['Registro Civil', 'RC'],
+      ['Tarjeta Identidad', 'TI'],
+      ['Número de identificación Tributaria', 'NIT'],
+      ['Tarjeta Decadactilar', 'TD'],
+      ['Pasaporte', 'PA'],
+      ['No Reportado', 'NR']
+    ]
   end
 
   # callback called after theme installed
