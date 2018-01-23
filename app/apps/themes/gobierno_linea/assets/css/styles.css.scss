@@ -1,6 +1,4 @@
-#app-header {
-  background-color: rgb(4, 57, 80);
-}
+
 
 #app-header .logo {
   height: 75px;
@@ -56,7 +54,6 @@
   width: 100%;
   background-size: cover;
   background-position: center;
-  background-image: url("../images/bgimage.jpg")
 }
 
 #app-noticias {
@@ -111,7 +108,6 @@
   width: 0;
   height: 0;
   border-top: 66px solid #888;
-  border-top-color: #9cd70e;
   border-left: 66px solid transparent;
   padding: 0;
   background-color: transparent;
@@ -162,14 +158,7 @@
 }
 
 
-#app-tramites .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
-  color: white;
-  background-color: rgb(4, 57, 80);
-}
 
-#app-tramites .tramites {
-  border-right: 1px solid rgb(4, 57, 80);
-}
 
 #app-tramites .tramites h4,
 #app-tramites .tramites i {
@@ -203,13 +192,6 @@
   font-size: 12px;
 }
 
-#app-tramites .ayuda h6,
-#app-tramites .ayuda small,
-#app-tramites .ayuda i
-{
-  color: rgb(4, 57, 80);
-}
-
 #app-tramites .ayuda img {
   width: 200px;
   position: absolute;
@@ -237,13 +219,11 @@
 #app-conocenos .conocenos-mas li a {
   font-size: 12px;
   margin-left: 50px;
-  color: rgb(20, 167, 20);
 }
 
 #app-canales {
   height: 350px;
   width: 100%;
-  color: rgb(4, 57, 80);
 }
 
 #app-canales .yotoco-content li {
@@ -266,7 +246,6 @@
 #app-contacto {
   height: 280px;
   width: 100%;
-  background-color: rgb(4, 57, 80);
 }
 
 #app-contacto a {

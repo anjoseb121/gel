@@ -12,10 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20171211172851) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
-  create_table "cama_comments", id: :serial, force: :cascade do |t|
+  create_table "cama_comments", force: :cascade do |t|
     t.string "author"
     t.string "author_email"
     t.string "author_url"
@@ -35,7 +32,7 @@ ActiveRecord::Schema.define(version: 20171211172851) do
     t.index ["user_id"], name: "index_cama_comments_on_user_id"
   end
 
-  create_table "cama_custom_fields", id: :serial, force: :cascade do |t|
+  create_table "cama_custom_fields", force: :cascade do |t|
     t.string "object_class"
     t.string "name"
     t.string "slug"
@@ -52,12 +49,12 @@ ActiveRecord::Schema.define(version: 20171211172851) do
     t.index ["slug"], name: "index_cama_custom_fields_on_slug"
   end
 
-  create_table "cama_custom_fields_relationships", id: :serial, force: :cascade do |t|
+  create_table "cama_custom_fields_relationships", force: :cascade do |t|
     t.integer "objectid"
     t.integer "custom_field_id"
     t.integer "term_order"
     t.string "object_class"
-    t.text "value"
+    t.text "value", limit: 1073741823
     t.string "custom_field_slug"
     t.integer "group_number", default: 0
     t.index ["custom_field_id"], name: "index_cama_custom_fields_relationships_on_custom_field_id"
@@ -66,9 +63,9 @@ ActiveRecord::Schema.define(version: 20171211172851) do
     t.index ["objectid"], name: "index_cama_custom_fields_relationships_on_objectid"
   end
 
-  create_table "cama_metas", id: :serial, force: :cascade do |t|
+  create_table "cama_metas", force: :cascade do |t|
     t.string "key"
-    t.text "value"
+    t.text "value", limit: 1073741823
     t.integer "objectid"
     t.string "object_class"
     t.index ["key"], name: "index_cama_metas_on_key"
@@ -76,11 +73,11 @@ ActiveRecord::Schema.define(version: 20171211172851) do
     t.index ["objectid"], name: "index_cama_metas_on_objectid"
   end
 
-  create_table "cama_posts", id: :serial, force: :cascade do |t|
+  create_table "cama_posts", force: :cascade do |t|
     t.string "title"
     t.string "slug"
-    t.text "content"
-    t.text "content_filtered"
+    t.text "content", limit: 1073741823
+    t.text "content_filtered", limit: 1073741823
     t.string "status", default: "published"
     t.datetime "published_at"
     t.integer "post_parent"
@@ -100,7 +97,7 @@ ActiveRecord::Schema.define(version: 20171211172851) do
     t.index ["user_id"], name: "index_cama_posts_on_user_id"
   end
 
-  create_table "cama_term_relationships", id: :serial, force: :cascade do |t|
+  create_table "cama_term_relationships", force: :cascade do |t|
     t.integer "objectid"
     t.integer "term_order"
     t.integer "term_taxonomy_id"
@@ -109,9 +106,9 @@ ActiveRecord::Schema.define(version: 20171211172851) do
     t.index ["term_taxonomy_id"], name: "index_cama_term_relationships_on_term_taxonomy_id"
   end
 
-  create_table "cama_term_taxonomy", id: :serial, force: :cascade do |t|
+  create_table "cama_term_taxonomy", force: :cascade do |t|
     t.string "taxonomy"
-    t.text "description"
+    t.text "description", limit: 1073741823
     t.integer "parent_id"
     t.integer "count"
     t.string "name"
@@ -129,7 +126,7 @@ ActiveRecord::Schema.define(version: 20171211172851) do
     t.index ["user_id"], name: "index_cama_term_taxonomy_on_user_id"
   end
 
-  create_table "cama_users", id: :serial, force: :cascade do |t|
+  create_table "cama_users", force: :cascade do |t|
     t.string "username"
     t.string "role", default: "client"
     t.string "email"
@@ -154,17 +151,7 @@ ActiveRecord::Schema.define(version: 20171211172851) do
     t.index ["username"], name: "index_cama_users_on_username"
   end
 
-  create_table "plugins_attacks", force: :cascade do |t|
-    t.string "path"
-    t.string "browser_key"
-    t.bigint "site_id"
-    t.datetime "created_at"
-    t.index ["browser_key"], name: "index_plugins_attacks_on_browser_key"
-    t.index ["path"], name: "index_plugins_attacks_on_path"
-    t.index ["site_id"], name: "index_plugins_attacks_on_site_id"
-  end
-
-  create_table "plugins_contact_forms", id: :serial, force: :cascade do |t|
+  create_table "plugins_contact_forms", force: :cascade do |t|
     t.integer "site_id"
     t.integer "count"
     t.integer "parent_id"
