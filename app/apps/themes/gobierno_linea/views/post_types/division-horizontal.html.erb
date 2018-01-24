@@ -23,13 +23,13 @@ El resultado de este tramite es obtener la aprobación de los planos de alindera
     <%= text_field_tag :second_last_name, params[:second_last_name] %>
     </br>
     <%= label_tag(:mail, "Correo electrónico: *") %>
-    <%= text_field_tag :mail, params[:mail] %>
+    <%= email_field :mail, params[:mail] %>
     </br>
     <%= label_tag(:phone, "Número Teléfono Contacto:*") %>
-    <%= text_field_tag :phone, params[:phone] %>
+    <%= telephone_field :phone, params[:phone] %>
     </br>
     <%= label_tag(:description, "Descripción: *") %>
-    <%= text_field_tag :description, params[:description] %>
+    <%= text_area_tag :description, params[:description] %>
     
     </br></br></br>
     <h3>Información básica del establecimiento.</h3>

@@ -22,13 +22,13 @@ El resultado de este trámite es obtener la autorización previa para adelantar 
     <%= text_field_tag :second_last_name, params[:second_last_name] %>
     </br>
     <%= label_tag(:mail, "Correo electrónico: *") %>
-    <%= text_field_tag :mail, params[:mail], :required => true %>
+    <%= email_field :mail, params[:mail], :required => true %>
     </br>
     <%= label_tag(:phone, "Número Teléfono Contacto:*") %>
-    <%= text_field_tag :phone, params[:phone], :required => true %>
+    <%= telephone_field :phone, params[:phone], :required => true %>
     </br>
     <%= label_tag(:description, "Descripción: *") %>
-    <%= text_field_tag :description, params[:description], :required => true %>
+    <%= text_area_tag :description, params[:description], :required => true %>
     
     </br></br></br>
     <h3>Información básica del establecimiento.</h3>

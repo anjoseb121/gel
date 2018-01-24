@@ -1,0 +1,64 @@
+<% if post.has_thumb? && !defined?(skip_thumb) %>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <%= raw post.the_link_thumb({}, {class: "img-responsive img-rounded col-md-12 col-lg-12"}) %>
+        </div>
+    </div>
+<%  end %>
+
+<% categories = post.the_categories.decorate %>
+<% if categories.present? && !defined?(skip_categories) %>
+  <div class="row ml-1">
+    <div class="col contenedor px-1">
+      <div class="panel-heading"><%= ct("categories", default: 'Categories') %></div>
+      <div class="nav flex-column nav-pills py-1" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+        <% categories.each do |p| %>
+          <a class="nav-link" href="<%= p.the_url %>"><%= p.the_title %></a>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<% if !defined?(skip_last_articles) %>
+  <div class="row ml-1">
+    <div class="col contenedor px-1">
+      <%= ct("latest_articles", default: 'Latest Articles') %>
+      <div class="nav flex-column nav-pills py-1" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+        <% current_site.the_posts("post").latest.limit(7).decorate.each do |p| %>
+          <a class="nav-link" href="<%= p.the_url %>"><%= p.the_title %></a>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<% if !defined?(skip_similar_art) %>
+  <div class="row ml-1">
+    <div class="col contenedor px-1">
+      <%= ct("related_articles", default: 'Related Articles') %>
+      <div class="nav flex-column nav-pills py-1" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+        <% post.the_related_posts.latest.limit(7).decorate.each do |p| %>
+          <a class="nav-link" href="<%= p.the_url %>"><%= p.the_title %></a>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+
+<% if !defined?(skip_tags) %>
+    <% tags = post.the_tags.decorate %>
+    <% if tags.present? %>
+      <div class="row ml-1">
+        <div class="col contenedor px-1">
+          <%= ct("related_articles", default: 'Related Articles') %>
+          <div class="nav flex-column nav-pills py-1" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            <% tags.each do |p| %>
+              <a class="nav-link" href="<%= p.the_url %>"><%= p.the_title %></a>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+<% end %>

@@ -29,7 +29,7 @@ class Formulario
     client = Savon.client(wsdl: wsdl)
     message_data = {
       :type_document => data_wsdl[:code_number], 
-      :keys => [-1, -2, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+      :keys => [-1, -2, 10, 20, -4, 1053, 2083, 1021, 2060, 1014, 3039, 3040, 3041, 2047, 2048],
       :values => [4, 4.1, name, surname, email, phone, description, address, neighbor, predial, lot, neighborhood, urbanization, id_type, id_number],
       :doc_file => encoded_string,
       :doc_fileName => data_file.original_filename,

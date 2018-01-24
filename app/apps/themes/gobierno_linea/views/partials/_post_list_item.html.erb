@@ -1,0 +1,35 @@
+<div class="row mt-5 mb-3">
+  <div class="col-4">
+    <div class="row img-noticia">
+      <div class="col-6">
+        <img src="<%= post.the_thumb_url%>" alt="<%= post.the_title %>">
+      </div>
+      <div class="col-6 pl-0">
+        <img src="<%= post.the_thumb_url%>" alt="<%= post.the_title %>">
+      </div>
+    </div>
+    <div class="row img-noticia mt-1">
+      <div class="col-6">
+        <img src="<%= post.the_thumb_url%>" alt="<%= post.the_title %>">
+      </div>
+      <div class="col-6 pl-0">
+        <img src="<%= post.the_thumb_url%>" alt="<%= post.the_title %>">
+      </div>
+    </div>
+  </div>
+  <div class="col-7">
+    <div class="row">
+      <p>
+        <strong class="text-uppercase">
+          <a rel="bookmark" href="<%= post.the_url %>"><%= post.the_title %></a>
+        </strong>
+      </p>
+    </div>
+    <div class="entry-content">
+        <%= raw post.the_excerpt %>
+    </div><!-- .entry-content -->
+    <div class="row">
+      <span class="badge badge-success"><%= post.the_created_at %></span>
+    </div>
+  </div>
+</div>
