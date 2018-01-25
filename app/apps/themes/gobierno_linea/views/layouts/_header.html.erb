@@ -1,44 +1,94 @@
-<!-- header -->
+<!-- Header -->
 <header id="app-header" class="main-color">
-  <div class="container">
-    <div class="row text-white">
-      <div class="col-5">
-        <%= image_tag current_site.the_logo, class: "img-fluid float-left logo" %>
-        <ul class="list-unstyled marca">
-          <li class="alcaldia"><%= current_site.the_title %></li>
-          <li class="liderando"><%= current_site.the_content %></li>
-        </ul>
-      </div>
-      <div class="col-7">
-        <!-- Iconos -->
-        <div class="row top-icons">
-          <div class="col-12 text-right">
-            <a href="#">
-              <i class="fa fa-cog" aria-hidden="true"></i>
-            </a>
-            <a href="#">
-              <i class="fa fa-question-circle" aria-hidden="true"></i>
-            </a>
-          </div>
-        </div>
-        <!-- /Iconos -->
-        <!-- Navegacion -->
-        <div class="col navegacion mt-2">
-          <div class="row">
-            <div class="col-11 offset-1">
-              <ul class="nav nav-pills">
-                <% cama_menu_parse_items(current_site.nav_menus.find_by_slug('gel_main_menu').children).each do |item| %>
-                  <li class="nav-item">
-                    <a class="nav-link <%= 'active' if site_current_path == item[:url] %>" href="<%= item[:url] %>"><%= item[:label] %></a>
-                  </li>
-                <% end %>
-              </ul>
+  <div class="row text-center config-menu">
+    <div class="col">
+      <div class="pos-f-t">
+        <div class="collapse" id="navbarToggleExternalContent">
+          <div class="row mt-3">
+            <div class="col">
+              <div class="row justify-content-center">
+                <div class="col-12 col-md-4 col-lg-2">
+                  <a class="text-white" href="/sitemap.html">Mapa del sitio</a>
+                </div>
+                <div class="col-12 col-md-4 col-lg-3">
+                  <a class="text-white" href="#">Configuración por defecto</a>
+                </div>
+                <div class="col-12 col-md-4 col-lg-2">
+                  <a class="text-white" href="#">Alto contraste</a>
+                </div>
+                <div class="col-12 col-md-6 col-lg-2">
+                  <a class="text-white" href="#">Seleccionar idioma</a>
+                </div>
+                <%= raw current_site.draw_languages("language list-inline pull-right", true) %>
+                <div class="col-12 col-md-6 col-lg-2">
+                  <ul class="list-unstyled list-inline font-buttons">
+                    <li class="list-inline-item">
+                      <button>
+                        <i class="fa fa-font text-color" aria-hidden="true">-</i>
+                      </button>
+                    </li>
+                    <li class="list-inline-item">
+                      <button>
+                        <i class="fa fa-font text-color" aria-hidden="true"></i>
+                      </button>
+                    </li>
+                    <li class="list-inline-item">
+                      <button>
+                        <i class="fa fa-font text-color" aria-hidden="true">+</i>
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <!-- /Navegacion -->
+        <!-- Boton de engranaje para desplegar la configuracion de pagina -->
+        <nav class="navbar main-color">
+          <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fa fa-cog text-white" aria-hidden="true"></i>
+          </button>
+        </nav>
+        <!-- /Boton de engranaje para desplegar la configuracion de pagina -->
       </div>
     </div>
   </div>
+  <!-- Columna para logo y marca -->
+  <div class="row text-white justify-content-between">
+    <!-- Fila para logo y marca -->
+    <div class="col-12 col-sm-10 col-lg-5 ml-4 mb-3">
+      <div class="row">
+        <div class="col-2 col-sm-1 col-md-1 col-lg-1 p-0 ml-4">
+          <%= image_tag current_site.the_logo, class: "logo img-fluid" %>
+        </div>
+        <div class="col-8 col-sm-8 col-md-8 p-0 ml-2">
+          <h5><%= current_site.the_title %></h5>
+          <h6><%= current_site.the_content %></h6>
+        </div>
+      </div>
+    </div>
+    <!-- /Fila para logo y marca -->
+    <!-- Fila para barra de navegacion -->
+    <div class="col-12 col-md-12 offset-md-1 col-lg-6 offset-lg-0 p-0 mr-4">
+      <nav class="navbar navbar-expand-md p-0">
+        <button class="navbar-toggler ml-5 text-white mb-2" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fa fa-bars" aria-hidden="true"></i>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto text-center">
+            <% cama_menu_parse_items(current_site.nav_menus.find_by_slug('gel_main_menu').children).each do |item| %>
+              <li class="nav-item">
+                <a class="nav-link text-white <%= 'active' if site_current_path == item[:url] %>" href="<%= item[:url] %>"><%= item[:label] %></a>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <!-- /Fila para barra de navegacion -->
+  </div>
 </header>
-<!-- /header -->
+<!-- /Header -->
