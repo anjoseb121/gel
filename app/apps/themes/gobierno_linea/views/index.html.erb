@@ -174,17 +174,17 @@
 <% services = current_theme.the_fields_grouped(['gel_collaborators_title', 'gel_collaborators_image', 'gel_collaborators_url']) %>
 <section id="app-colaboradores">
   <div class="row justify-content-center">
-    <div class="col-6">
-      <div class="row justify-content-between mt-3">
+    <div class="col-8 offset-1">
+      <ul class="list-inline">
         <% services.each_with_index do |item, index| %>
-          <div class="col-2">
+          <li class="list-inline-item">
             <a href="<%= item['gel_collaborators_url'].first %>" target="_blank">
-              <%= image_tag item['gel_collaborators_image'].first %>
+              <%= image_tag item['gel_collaborators_image'].first, class: "img-fluid" %>
             </a>
-          </div>
+          </li>
         <% end %>
-      </div>
+      </ul>
     </div>
   </div>
 </section>
-<!-- /Seccion colaboradores -->
+<!-- /Sección colaboradores -->

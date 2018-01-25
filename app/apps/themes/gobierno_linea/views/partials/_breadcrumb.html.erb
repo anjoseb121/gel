@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <% @_front_breadcrumb.each_with_index do |bc_item, index| %>
+          <% if @_front_breadcrumb.size == (index+1) #last menu %>
+            <li class="breadcrumb-item active" aria-current="page">
+              <%= bc_item[0] %>
+            </li>
+          <% else %>
+            <li class="breadcrumb-item">
+              <a href="<%= bc_item[1] %>">
+                <%= bc_item[0] %>
+              </a>
+            </li>
+          <% end %>
+        <% end %>
+      </ol>
+    </nav>
+  </div>
+</div>
+
