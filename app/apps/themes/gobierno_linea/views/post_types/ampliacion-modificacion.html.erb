@@ -1,79 +1,18 @@
-<h1>
-Licencia para ampliación o modificación
-</h1>
+<% 
+  page_title = 'Licencia para ampliación o modificación' 
+  page_description = 'El resultado de este trámite es obtener la autorización previa para adelantar obras de urbanización y parcelación de predios; de construcción en sus modalidades de ampliación y modificación.' 
+  code_number = '8011' 
+  extra_field = "#{label_tag(:copy_doc_id, 'Copia escaneada del certificado de tradición o escritura *', :class => 'text-success')}
+    #{file_field_tag 'copy_doc_id', :required => true, :class => 'form-control'}
+    #{label_tag(:receipt_canceled, 'Copia escaneada de la licencia de construcción *', :class => 'text-success')}
+    #{file_field_tag 'receipt_canceled', :class => 'form-control'}"
+%>
 
-<p>
-El resultado de este trámite es obtener la autorización previa para adelantar obras de urbanización y parcelación de predios; de construcción en sus modalidades de ampliación y modificación.
-</p>
-
-<%= form_tag("/formulario", method: "post", multipart: true) do %>
-  <p>
-    <h3>Información básica de la solicitud</h3>
-    <%= label_tag(:name, "Primero Nombre:*") %>
-    <%= text_field_tag :name, params[:name], :required => true %>
-    </br>
-    <%= label_tag(:second_name, "Segundo Nombre:") %>
-    <%= text_field_tag :second_name, params[:second_name] %>
-    </br>
-    <%= label_tag(:last_name, "Primer Apellido:*") %>
-    <%= text_field_tag :last_name, params[:last_name], :required => true %>
-    </br>
-    <%= label_tag(:second_last_name, "Segundo Apellido:") %>
-    <%= text_field_tag :second_last_name, params[:second_last_name] %>
-    </br>
-    <%= label_tag(:mail, "Correo electrónico: *") %>
-    <%= email_field :mail, params[:mail], :required => true %>
-    </br>
-    <%= label_tag(:phone, "Número Teléfono Contacto:*") %>
-    <%= telephone_field :phone, params[:phone], :required => true %>
-    </br>
-    <%= label_tag(:description, "Descripción: *") %>
-    <%= text_area_tag :description, params[:description], :required => true %>
-    
-    </br></br></br>
-    <h3>Información básica del establecimiento.</h3>
-    Datos del establecimiento e información complementaria del propietario.
-    </br></br>
-
-    <%= label_tag(:id_type, "Tipo de licencia a solicitar: * ") %>
-    <%= select_tag(:id_type, options_for_select([['Licencia para ampliación', 1], ['Licencia para modificación', 2]])) %>
-    </br>
-    <%= label_tag(:address, "Dirección del predio ") %>
-    <%= text_field_tag :address, params[:address] %>
-    </br>
-    <%= label_tag(:neighbor, "Barrio") %>
-    <%= text_field_tag :neighbor, params[:neighbor] %>
-    </br>
-    <%= label_tag(:predial, "Número de predial") %>
-    <%= text_field_tag :predial, params[:predial] %>
-    </br>
-    <%= label_tag(:lot, "Número de Lote ") %>
-    <%= text_field_tag :lot, params[:lot] %>
-    </br>
-    <%= label_tag(:neighborhood, "Manzana") %>
-    <%= text_field_tag :neighborhood, params[:neighborhood] %>
-    </br>
-    <%= label_tag(:urbanization, "Urbanización") %>
-    <%= text_field_tag :urbanization, params[:urbanization] %>
-    </br>
-    <%= label_tag(:id_type, "Tipo de documento de identidad  ") %>
-    <%= select_tag(:id_type, options_for_select(documents_types)) %>
-    </br>
-    <%= label_tag(:id_number, "Número de documento de identidad ") %>
-    <%= text_field_tag :id_number, params[:id_number], :required => true %>
-    </br>
-    <%= label_tag(:copy_doc_id, "Copia escaneada del certificado de tradición o escritura. * ") %>
-    <%= file_field_tag 'copy_doc_id', :required => true %>
-    </br>
-    <%= label_tag(:receipt_canceled, "Copia escaneada de la licencia de construcción. *") %>
-    <%= file_field_tag 'receipt_canceled' %>
-
-    </br></br></br>
-    <%= check_box_tag(:terms) %>
-    <%= label_tag(:terms, "Términos y condiciones de uso de datos personales ") %>
-    </br></br>
-    
-    <%= hidden_field_tag(:code_number, '8011') %> 
-    <%= submit_tag "Enviar", name: nil %>
-  </p>
-<% end %>
+<%= 
+  render partial: 'layouts/forms', locals: {
+    page_title: page_title, 
+    page_description: page_description, 
+    code_number: code_number, 
+    extra_field: extra_field
+  } 
+%>

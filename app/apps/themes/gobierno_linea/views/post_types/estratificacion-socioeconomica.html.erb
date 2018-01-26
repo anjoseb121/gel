@@ -1,106 +1,18 @@
-<div class="row justify-content-center ">
-  <div class="col-8 offset-1 contenedor mt-2 mb-2">
-    <%= render partial: 'partials/breadcrumb', locals: {breadcrumb: @post_type.the_breadcrumb } %>
+<% 
+  page_title = 'Certificado de estratificación socioeconómica' 
+  page_description = 'El resultado de este trámite es obtener el Certificar el estrato socio-económico oficial de uno o varios inmuebles residenciales, urbanos y rurales que se encuentren en jurisdicción del Municipio.' 
+  code_number = '8008' 
+  extra_field = "#{label_tag(:copy_doc_id, 'Copia escaneada del documento de identidad del propietario. *', :class => 'text-success')}
+    #{file_field_tag 'copy_doc_id', :required => true, :class => 'form-control'}
+    #{label_tag(:receipt_canceled, 'Recibo de pago cancelado', :class => 'text-success')}
+    #{file_field_tag 'receipt_canceled', :class => 'form-control'}"
+%>
 
-    <div class="row justify-content-center mt-5 text-color">
-      <div class="col-8">
-        <%= flash[:response_data] %>
-        <h3>
-          <strong>Certificado de estratificación socioeconómica</strong>
-        </h3>
-        <br>
-        <small>
-          El resultado de este trámite es obtener el Certificar el estrato socio-económico oficial de uno o varios inmuebles residenciales, urbanos y rurales que se encuentren en jurisdicción del Municipio.
-          Los campos marcados con asterisco (*) son obligatorios.
-        </small>
-        <br>
-        <br>
-        <%= form_tag("/formulario", method: "post", multipart: true) do %>
-          <h3>Información básica de la solicitud</h3>
-          <div class="form-group">
-            <%= label_tag(:name, "Primero Nombre *", :class => "text-success") %>
-            <%= text_field_tag :name, params[:name], :required => true, :class => "form-control" %>
-          </div>
-          <div class="form-group">
-            <%= label_tag(:second_name, "Segundo Nombre", :class => "text-success") %>
-            <%= text_field_tag :second_name, params[:second_name], :class => "form-control" %>
-          </div>
-          <div class="form-group">
-            <%= label_tag(:last_name, "Primer Apellido *", :class => "text-success") %>
-            <%= text_field_tag :last_name, params[:last_name], :required => true, :class => "form-control" %>
-          </div>
-          <div class="form-group">
-            <%= label_tag(:second_last_name, "Segundo Apellido ", :class => "text-success") %>
-            <%= text_field_tag :second_last_name, params[:second_last_name], :class => "form-control" %>
-          </div>
-          <div class="form-group">
-            <%= label_tag(:mail, "Correo electrónico *", :class => "text-success") %>
-            <%= email_field :mail, params[:mail], :required => true, :class => "form-control" %>
-          </div>
-          <div class="form-group">
-            <%= label_tag(:phone, "Número Teléfono Contacto *", :class => "text-success") %>
-            <%= telephone_field :phone, params[:phone], :required => true, :class => "form-control" %>
-          </div>
-          <div class="form-group">
-            <%= label_tag(:description, "Descripción *", :class => "text-success") %>
-            <%= text_area_tag :description, params[:description], :required => true, :class => "form-control" %>
-          </div>
-          <h3>Información básica del establecimiento.</h3>
-          Datos del establecimiento e información complementaria del propietario.
-          </br></br>
-          <div class="form-group">
-            <%= label_tag(:address, "Dirección del predio ", :class => "text-success") %>
-            <%= text_field_tag :address, params[:address], :class => "form-control" %>
-          </div>
-          <div class="form-group">
-            <%= label_tag(:neighbor, "Barrio", :class => "text-success") %>
-            <%= text_field_tag :neighbor, params[:neighbor], :class => "form-control" %>
-          </div>
-          <div class="form-group">
-            <%= label_tag(:predial, "Número de predial", :class => "text-success") %>
-            <%= text_field_tag :predial, params[:predial], :class => "form-control" %>
-          </div>
-          <div class="form-group">
-            <%= label_tag(:lot, "Número de Lote ", :class => "text-success") %>
-            <%= text_field_tag :lot, params[:lot], :class => "form-control" %>
-          </div>
-          <div class="form-group">
-            <%= label_tag(:lot, "Número de Lote", :class => "text-success") %>
-            <%= text_field_tag :lot, params[:lot], :class => "form-control" %>
-          </div>
-          <div class="form-group">
-            <%= label_tag(:neighborhood, "Manzana", :class => "text-success") %>
-            <%= text_field_tag :neighborhood, params[:neighborhood], :class => "form-control" %>
-          </div>
-          <div class="form-group">
-            <%= label_tag(:urbanization, "Urbanización", :class => "text-success") %>
-            <%= text_field_tag :urbanization, params[:urbanization], :class => "form-control" %>
-          </div>
-           <div class="form-group">
-            <%= label_tag(:id_type, "Tipo de documento de identidad", :class => "text-success") %>
-            <%= select_tag(:id_type, options_for_select(documents_types), :class => "form-control mt-3") %>
-          </div>
-          <div class="form-group">
-            <%= label_tag(:id_number, "Número de documento de identidad", :class => "text-success") %>
-            <%= text_field_tag :id_number, params[:id_number], :required => true, :class => "form-control" %>
-          </div>
-          <div class="form-group">
-            <%= label_tag(:copy_doc_id, "Copia escaneada del documento de identidad del propietario. *", :class => "text-success") %>
-            <%= file_field_tag 'copy_doc_id', :required => true, :class => "form-control" %>
-          </div>
-          <div class="form-group">
-            <%= label_tag(:receipt_canceled, "Recibo de pago cancelado", :class => "text-success") %>
-            <%= file_field_tag 'receipt_canceled', :class => "form-control" %>
-          </div>
-          <div class="form-group">
-            <%= check_box_tag(:terms) %>
-            <%= label_tag(:terms, "Términos y condiciones de uso de datos personales ") %>
-          </div>
-
-          <%= hidden_field_tag(:code_number, '8008') %> 
-          <%= submit_tag "Enviar", name: nil, :class =>  "btn btn-success float-right mb-5"%>
-        <% end %>
-      </div>
-    </div>
-  </div>
-</div>
+<%= 
+  render partial: 'layouts/forms', locals: {
+    page_title: page_title, 
+    page_description: page_description, 
+    code_number: code_number, 
+    extra_field: extra_field
+  } 
+%>
