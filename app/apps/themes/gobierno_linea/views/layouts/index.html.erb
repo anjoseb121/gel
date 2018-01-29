@@ -16,7 +16,57 @@
     crossorigin="anonymous">
 
   <style>
-    
+  
+    #app-header button .fa-font {
+      font-size: 16px;
+    }
+
+    /* Tamaño del texto del footer */
+    #footer p {
+      font-size: <%= 12 + dinamic_font_size %>px;
+    }
+
+    /* Tamaño del texto de la navbar */
+    #app-header .dropdown a {
+      font-size: <%= 12 + dinamic_font_size %>px;
+    }
+
+    /* Tamaño de letra del texto de las noticias */
+    #app-noticias .row p {
+      font-size: <%= 14 + dinamic_font_size %>px;
+    }
+    /* Tamaño del titulo "tramites y servicios" */
+    #app-tramites h4 {
+      font-size: <%= 26 + dinamic_font_size %>px;
+    }
+
+    #app-canales h6 {
+      font-size: <%= 18 + dinamic_font_size %>px;
+    }
+
+    /* Tamaño de la mayoría de parrafos */
+    #app-tramites .nav-item a,
+    #app-tramites .tab-content p,
+    #app-tramites .right-view h6,
+    #app-tramites .right-view a,
+    #app-conoce p,
+    #app-conoce .row a,
+    #app-conoce button a,
+    #app-canales p {
+      font-size: <%= 16 + dinamic_font_size %>px;
+    }
+
+    /* Textos pequeños */
+    #app-tramites .right-view small {
+      font-size: <%= 14 + dinamic_font_size %>px;
+    }
+
+    /* Titulo "Conoce nuestro municipio" */
+    #app-conoce h2,
+    #app-canales h2 {
+      font-size: <%= 30 + dinamic_font_size %>px;
+    }
+
     .main-color {
       background-color: <%= current_theme.the_field("main_color") %>;
     }

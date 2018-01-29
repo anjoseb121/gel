@@ -1,6 +1,6 @@
 module Themes::GobiernoLinea::MainHelper
   def self.included(klass)
-    klass.helper_method [:documents_types] rescue "" # here your methods accessible from views
+    klass.helper_method [:documents_types, :dinamic_font_size] rescue "" # here your methods accessible from views
   end
 
   def gobierno_linea_settings(theme)
@@ -18,6 +18,10 @@ module Themes::GobiernoLinea::MainHelper
       ['Pasaporte', 'PA'],
       ['No Reportado', 'NR']
     ]
+  end
+
+  def dinamic_font_size(size = 0)
+    size
   end
 
   # callback called after theme installed
