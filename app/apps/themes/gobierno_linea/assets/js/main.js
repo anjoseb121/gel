@@ -12,3 +12,23 @@
 //
 //= require jquery
 //= require camaleon_cms/bootstrap.min.js
+
+
+//-------------------------------
+
+function reestablishText() {
+  var multiplier = 1;
+  document.body.style.fontSize = "1em";
+}
+
+function reduceText() {
+  reestablishText();
+  var multiplier = -12;
+  document.body.style.fontSize = "0.75em";
+}
+
+function increaseText() {
+  reestablishText();
+  var multiplier = 12;
+  document.body.style.fontSize = "1.35em";
+}

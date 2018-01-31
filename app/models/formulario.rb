@@ -43,7 +43,7 @@ class Formulario
         {:int => 3040}, 
         {:int => 3041}, 
         {:int => 2047}, 
-        {:int => 2048},
+        # {:int => 2048},
       ],
       :values => [
         {:string => "4"},
@@ -60,7 +60,7 @@ class Formulario
         {:string => neighborhood},
         {:string => urbanization},
         {:string => id_type},
-        {:int => id_number},
+        # {:int => id_number},
       ],
       :doc_file => encoded_string,
       :doc_fileName => data_file.original_filename,

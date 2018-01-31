@@ -1,4 +1,5 @@
 module Themes::GobiernoLinea::MainHelper
+
   def self.included(klass)
     klass.helper_method [:documents_types] rescue "" # here your methods accessible from views
   end
