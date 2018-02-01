@@ -1,4 +1,5 @@
 module Themes::GobiernoLinea::MainHelper
+
   def self.included(klass)
     klass.helper_method [:documents_types] rescue "" # here your methods accessible from views
   end
@@ -89,6 +90,18 @@ module Themes::GobiernoLinea::MainHelper
     gr.add_field({"name"=>"Title", "slug"=>"gel_collaborators_title"},{field_key: "text_box", translate: true})
     gr.add_field({"name"=>"Image", "slug"=>"gel_collaborators_image"},{field_key: "image"})
     gr.add_field({"name"=>"Link", "slug"=>"gel_collaborators_url"},{field_key: "url"})
+
+    gr = current_theme.add_field_group({name: "GEL Formularios", slug: "gel_forms", is_repeat: true}, 'tramites-y-servicios')
+    gr.add_field({"name"=>"Title", "slug"=>"gel_forms_title"},{field_key: "text_box", translate: true})
+    gr.add_field({"name"=>"Es Requerido?", "slug"=>"gel_forms_required"}, {field_key: "checkbox", multiple_options: [
+      {title: "¿Es requerido?", value: "true", default: true}
+    ]})
+    gr.add_field({"name"=>"Tipo de campo", "slug"=>"gel_forms_type"}, {field_key: "select", multiple_options: [
+      {title: "Campo de texto", value: "text_area_tag", default: true},
+      {title: "Telefono", value: "phone"},
+      {title: "Telefono", value: "phone"},
+    ]})
+
   end
 
   # callback executed after theme uninstalled

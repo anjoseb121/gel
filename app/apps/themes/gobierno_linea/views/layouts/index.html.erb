@@ -16,7 +16,7 @@
     crossorigin="anonymous">
 
   <style>
-    
+
     .main-color {
       background-color: <%= current_theme.the_field("main_color") %>;
     }
@@ -27,6 +27,20 @@
 
     .text-color {
       color: rgb(4, 57, 80);
+    }
+
+    #app-header .dropdown-menu {
+      border: 1px solid white;
+      background-color: <%= current_theme.the_field("main_color") %>;
+    }
+    
+    #app-header .dropdown.show {
+      background-color: <%= current_theme.the_field("secondary_color") %>;
+      border-radius: 5px;
+    }
+    
+    #app-header .dropdown a:hover {
+      background-color: <%= current_theme.the_field("secondary_color") %>;
     }
 
     /* Color "activo" del navbar */

@@ -56,11 +56,11 @@
             </h3>
           </div>
           <div class="row mt-2">
-            <% current_site.the_posts(current_theme.get_field("recent_post_type")).latest.limit(4).decorate.each do |post| %>
+            <% current_site.the_posts(current_theme.get_field("recent_post_type")).latest.limit(2).decorate.each do |post| %>
               <div class="col-12 col-sm-6 img-left">
                 <div class="relative">
                   <img class="img-fluid" src="<%= post.the_thumb_url%>" alt="img">
-                  <a href="<%= post.the_url %>" class="badge-corner badge-success"><span>27 dic</span></a>
+                  <a href="<%= post.the_url %>" class="badge-corner badge-success"><span><%= post.the_created_at %></span></a>
                   <p><%= post.the_title %></p>
                 </div>
               </div>
@@ -72,7 +72,7 @@
           </div>
           <div class="row">
             <div class="col-12 text-center">
-              <button class="btn btn-outline-dark">Más noticias</button>
+              <a class="btn btn-outline-dark" href="/post" role="button">Más noticias</a>
             </div>
           </div>
         </div>

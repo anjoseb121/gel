@@ -4,7 +4,7 @@ class Formulario
   attr_reader :attr_response
 
   def initialize(data_wsdl)
-    name = "#{data_wsdl[:name]} #{data_wsdl[:last_name]}"
+    name = "#{data_wsdl[:name]} #{data_wsdl[:second_name]}"
     surname = "#{data_wsdl[:last_name]} #{data_wsdl[:second_last_name]}"
     email = data_wsdl[:mail][0]
     phone = data_wsdl[:phone][0]
@@ -23,15 +23,45 @@ class Formulario
 
     secundary_file = data_wsdl[:receipt_canceled] 
     encoded_secundary_file = secundary_file ? encode_file_base64(secundary_file.tempfile) : ''
-    
+
     wsdl = 'https://evolution-epx.com:8027/ePxExternalSRV.asmx?wsdl'
     client = Savon.client(wsdl: wsdl)
     message_data = {
-      :type_document => data_wsdl[:code_number], 
-      :keys => [-1, -2, 10, 11], 
-      :values => ["4", "4.1", "Nombre", "Apellido"],
-      #:keys => [-1, -2, 10, 11, -4, 1053, 2083, 1021, 2060, 1014, 3039, 3040, 3041, 2047, 2048], 
-      #:values => ["4", "4.1", name, surname, email, phone, description, address, neighbor, predial, lot, neighborhood, urbanization, id_type, id_number],
+      :type_document => data_wsdl[:code_number],
+      :keys => [
+        {:int => -1}, 
+        {:int => -2}, 
+        {:int => 10}, 
+        {:int => 11}, 
+        {:int => -4}, 
+        {:int => 1053}, 
+        {:int => 2083}, 
+        {:int => 1021}, 
+        {:int => 2060}, 
+        # {:int => 1014},
+        {:int => 3039},
+        {:int => 3040}, 
+        {:int => 3041}, 
+        {:int => 2047}, 
+        # {:int => 2048},
+      ],
+      :values => [
+        {:string => "4"},
+        {:string => "4.1"},
+        {:string => name},
+        {:string => surname},
+        {:string => email},
+        {:string => phone},
+        {:string => description},
+        {:string => address},
+        {:string => neighbor},
+        # {:string => predial},
+        {:string => lot},
+        {:string => neighborhood},
+        {:string => urbanization},
+        {:string => id_type},
+        # {:int => id_number},
+      ],
       :doc_file => encoded_string,
       :doc_fileName => data_file.original_filename,
       :annex_files => {
@@ -53,6 +83,7 @@ class Formulario
         'Email' => email
       }
     }
+    
     response = client.call(:radicate, message: message_data)
     response_data = response.to_array(:radicate_response, :radicate_result).first
     
