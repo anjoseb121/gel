@@ -3,6 +3,70 @@
   <div class="row text-center config-menu">
     <div class="col">
       <div class="pos-f-t">
+        <div class="collapse" id="navbarToggleExternalContent2">
+          <!-- <h4 class="text-white">Prueba</h4> -->
+          <div class="row text-white mt-2">
+            <div class="col-md-4">
+              <div class="blank-spacer padding-xsmall"></div>
+              <h3 class="Titleacce">
+                <i class="fa fa-universal-access color-success"></i> Opciones de Accesibilidad</h3>
+              <p>Con el objetivo de facilitar la navegación y acceso a la información en este portal web a personas con dificultades
+                visuales, se habilitaron las siguientes opciones:</p>
+              <p>
+                <i class="fa fa-plus-circle color-success"></i> Aumento de Fuente </p>
+              <p>
+                <i class="fa fa-plus-circle color-success"></i> Alto Contraste </p>
+              <h3 class="Titleacce">Ayudas</h3>
+              <p>
+                <i class="fa fa-plus-circle color-success"></i> Descargar
+                <a style="margin:0" target="_blank" href="http://www.essentialaccessibility.com/es/download"
+                  title="eSSENTIAL Accessibility"> eSSENTIAL Accessibility </a> Diferentes herramientas que facilitan la navegacion.</p>
+              <p>
+                <i class="fa fa-plus-circle color-success"></i> Descargar
+                <a style="margin:0" target="_blank" href="http://micrositios.mintic.gov.co/convertic/" title="CONVERTIC #TecnologíaParaVer">
+                CONVERTIC </a>Descarga gratuitamente de la pagina de MINTIC un lector de Pantalla y un magnificador de
+                imágenes. </p>
+              <div class="blank-spacer padding-xsmall"></div>
+            </div>
+            <div class="col-md-4">
+              <div class="blank-spacer padding-xsmall"></div>
+              <h3 class="Titleacce">
+                <i class="fa fa-keyboard-o color-success"></i> Teclas de Acceso</h3>
+              <ul class="acceskey">
+                <li>ALT + i = Información del Municipio</li>
+                <li>ALT + t = Trámites y servicios</li>
+                <li>ALT + l = Pagos en línea</li>
+                <li>ALT + q = PQRD</li>
+                <li>ALT + n = Noticias</li>
+                <li>ALT + a = Transparencia y acceso a la información pública</li>
+              </ul>
+              <div class="blank-spacer padding-xsmall"></div>
+            </div>
+            <div class="col-md-4">
+              <div class="blank-spacer padding-xsmall"></div>
+              <p class="Titleacce">Para hacer uso de los accesskey en Internet Explorer deberá:</p>
+              <ul class="acceskey">
+                <li>Pulsar la tecla Alt</li>
+                <li>Pulsar el número o letra adecuada </li>
+                <li>Soltar la tecla Alt y el número</li>
+                <li>pulsar la tecla Enter y soltar</li>
+              </ul>
+              <p class="Titleacce">Para hacer uso de los accesskey en Google Crome deberá:</p>
+              <ul class="acceskey">
+                <li>Pulsar la tecla Alt</li>
+                <li>Pulsar el número o letra adecuada </li>
+              </ul>
+              <p class="Titleacce">Para hacer uso de los accesskey en Mozilla y Safary deberá:</p>
+              <ul class="acceskey">
+                <li>Pulsar la tecla Alt</li>
+                <li>Pulsar la tecla Shift</li>
+                <li>Pulsar el número o letra adecuada </li>
+
+              </ul>
+              <div class="blank-spacer padding-xsmall"></div>
+            </div>
+          </div>
+        </div>
         <div class="collapse" id="navbarToggleExternalContent">
           <div class="row mt-3">
             <div class="col">
@@ -11,10 +75,12 @@
                   <a class="text-white" href="/sitemap.html">Mapa del sitio</a>
                 </div>
                 <div class="col-12 col-md-4 col-lg-3">
-                  <a class="text-white" href="#">Configuración por defecto</a>
+                  <a class="text-white" href=".">Configuración por defecto</a>
                 </div>
                 <div class="col-12 col-md-4 col-lg-2">
-                  <a class="text-white" href="#">Alto contraste</a>
+                  <button onclick="contrast()" class="btn btn-link">
+                    Alto contraste
+                  </button>
                 </div>
                 <div class="col-12 col-md-6 col-lg-2">
                   <a class="text-white" href="#">Seleccionar idioma</a>
@@ -45,7 +111,11 @@
         </div>
         <!-- Boton de engranaje para desplegar la configuracion de pagina -->
         <nav class="navbar main-color">
-          <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
+          <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent2" aria-controls="navbarToggleExternalContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fa fa-sort text-white"></i>
+          </button>
+          <button class="navbar-toggler ml-0" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
             aria-expanded="false" aria-label="Toggle navigation">
             <i class="fa fa-cog text-white" aria-hidden="true"></i>
           </button>
@@ -60,7 +130,9 @@
     <div class="col-12 col-sm-10 col-lg-5 ml-4 mb-3">
       <div class="row">
         <div class="col-2 col-sm-1 col-md-1 col-lg-2 p-0 ml-4">
-          <%= image_tag current_site.the_logo, class: "logo img-fluid" %>
+          <a href="<%= current_site.the_url %>" title="<%= current_site.the_title %>" rel="home">
+            <%= image_tag current_site.the_logo, class: "logo img-fluid" %>
+          </a>
         </div>
         <div class="col-8 col-sm-8 col-md-8 pt-2 pl-2 p-0 ml-2">
           <h5><%= current_site.the_title %></h5>

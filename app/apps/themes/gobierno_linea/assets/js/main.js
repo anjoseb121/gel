@@ -13,22 +13,29 @@
 //= require jquery
 //= require camaleon_cms/bootstrap.min.js
 
+function contrast() {
+  $('html *:not(script, style, noscript)').each(function () {
+    $(this).css("background", "none");
+    $(this).css("background-color", "black");
+    $(this).css("color", "white");
+    $(this).css("box-shadow", "none");
+    $(this).css("text-shadow", "none");
+    $(this).css("text-color", "white");
+  });
+}
 
 //-------------------------------
 
 function reestablishText() {
-  var multiplier = 1;
   document.body.style.fontSize = "1em";
 }
 
 function reduceText() {
   reestablishText();
-  var multiplier = -12;
   document.body.style.fontSize = "0.75em";
 }
 
 function increaseText() {
   reestablishText();
-  var multiplier = 12;
   document.body.style.fontSize = "1.35em";
 }

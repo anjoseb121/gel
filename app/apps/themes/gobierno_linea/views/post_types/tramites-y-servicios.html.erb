@@ -15,13 +15,11 @@
 </div>
 
 <article id="post_type-view" class="post_type_<%= @post_type.slug %>">
-  <div class="row">
-    <% _tpl = lookup_context.template_exists?("post_types/#{@post_type.the_slug}/post_list_item", nil, true) ? "post_types/#{@post_type.the_slug}/post_list_item" : 'partials/post_list_item' %>
-    <% @posts.each_with_index do |post, index| %>
-        <%#= raw "<div class='clearfix'></div>" if index%3 == 0 && index > 0 %>
-        <%= render partial: _tpl, locals: {post: post.decorate, index: index} %>
-    <% end %>
-  </div>
+  <% _tpl = lookup_context.template_exists?("post_types/#{@post_type.the_slug}/post_list_item", nil, true) ? "post_types/#{@post_type.the_slug}/post_list_item" : 'partials/post_list_item' %>
+  <% @posts.each_with_index do |post, index| %>
+      <%#= raw "<div class='clearfix'></div>" if index%3 == 0 && index > 0 %>
+      <%= render partial: _tpl, locals: {post: post.decorate, index: index} %>
+  <% end %>
   <%= content_tag("div", raw(ct('no_contents_found', default: 'No contents found.')), class: "alert alert-warning") if @posts.empty? %>
   <%= will_paginate @posts, renderer: BootstrapPagination::Rails if @posts.present? %>
 </article>
