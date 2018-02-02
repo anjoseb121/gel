@@ -91,6 +91,14 @@ module Themes::GobiernoLinea::MainHelper
     gr.add_field({"name"=>"Image", "slug"=>"gel_collaborators_image"},{field_key: "image"})
     gr.add_field({"name"=>"Link", "slug"=>"gel_collaborators_url"},{field_key: "url"})
 
+    # Datos del tipo documental del formulario
+    gr = current_theme.add_field_group({name: "GEL Datos tipo documental", slug: "gel_typedocumetal", is_repeat: false}, 'tramites-y-servicios')
+    gr.add_field({"name"=>"Codigo de Area", "slug"=>"gel_typedocumetal_areaCode"},{field_key: "numeric"})
+    gr.add_field({"name"=>"Codigo tipo documental", "slug"=>"gel_typedocumetal_typedocument"},{field_key: "numeric"})
+    gr.add_field({"name"=>"Serie", "slug"=>"gel_typedocumetal_serie"},{field_key: "numeric", default_value: 4})
+    gr.add_field({"name"=>"Sub-Serie", "slug"=>"gel_typedocumetal_subserie"},{field_key: "numeric", default_value: 4.1})
+    
+    # Formulario del tipo documental
     gr = current_theme.add_field_group({name: "GEL Formularios", slug: "gel_forms", is_repeat: true}, 'tramites-y-servicios')
     gr.add_field({"name"=>"Title", "slug"=>"gel_forms_title"},{field_key: "text_box", translate: true})
     gr.add_field({"name"=>"Es Requerido?", "slug"=>"gel_forms_required"}, {field_key: "checkbox", multiple_options: [
@@ -98,10 +106,12 @@ module Themes::GobiernoLinea::MainHelper
     ]})
     gr.add_field({"name"=>"Tipo de campo", "slug"=>"gel_forms_type"}, {field_key: "select", multiple_options: [
       {title: "Campo de texto", value: "text_area_tag", default: true},
-      {title: "Telefono", value: "phone"},
-      {title: "Telefono", value: "phone"},
+      {title: "Telefono", value: "telephone_field"},
+      {title: "Fecha", value: "date_field"},
+      {title: "Email", value: "email_field"},
+      {title: "Numerico", value: "number_field"},
     ]})
-
+    gr.add_field({"name"=>"Numero Metadato", "slug"=>"gel_forms_metadato"},{field_key: "numeric"})
   end
 
   # callback executed after theme uninstalled
