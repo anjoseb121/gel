@@ -1,8 +1,6 @@
 class FormularioController < ApplicationController
   def index
-    @formulario = Formulario.new(params[:data]) if params[:data].present?
-    puts "----------"
-    puts "#{@formulario} --- enfermera"
-    redirect_to "/tramites-y-servicios", flash: {formulas: @formulario}
+    @formulario = Formulario.new(params)
+    redirect_to request.env['HTTP_REFERER'], flash: {response_data: @formulario.attr_response}
   end
 end

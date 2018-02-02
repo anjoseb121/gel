@@ -1,10 +1,24 @@
 module Themes::GobiernoLinea::MainHelper
+
   def self.included(klass)
-    klass.helper_method [:savon_soap] rescue "" # here your methods accessible from views
+    klass.helper_method [:documents_types] rescue "" # here your methods accessible from views
   end
 
   def gobierno_linea_settings(theme)
     # callback to save custom values of fields added in my_theme/views/admin/settings.html.erb
+  end
+
+  def documents_types
+    [
+      ['Cédula de Ciudadanía', 'CC'],
+      ['Cédula Extranjeria', 'CE'],
+      ['Registro Civil', 'RC'],
+      ['Tarjeta Identidad', 'TI'],
+      ['Número de identificación Tributaria', 'NIT'],
+      ['Tarjeta Decadactilar', 'TD'],
+      ['Pasaporte', 'PA'],
+      ['No Reportado', 'NR']
+    ]
   end
 
   # callback called after theme installed
@@ -15,7 +29,9 @@ module Themes::GobiernoLinea::MainHelper
       {name: 'Alcaldía', description: 'Alcaldía', options: {has_category: false, has_tags: false, not_deleted: true, has_summary: false, has_content: true, has_comments: false, has_picture: true, has_template: true, has_layout: true}},
       {name: 'Atencion al Ciudadano', description: 'Atencion al ciudadano', options: {has_category: false, has_tags: false, not_deleted: true, has_summary: false, has_content: true, has_comments: false, has_picture: true, has_template: true, has_layout: true}},
       {name: 'Tramites y Servicios', description: 'Tramites y Servicios', options: {has_category: false, has_tags: false, not_deleted: true, has_summary: false, has_content: true, has_comments: false, has_picture: true, has_template: true, has_layout: true}},
-      {name: 'Participación Ciudadana', description: 'Participación Ciudadana', options: {has_category: false, has_tags: false, not_deleted: true, has_summary: false, has_content: true, has_comments: false, has_picture: true, has_template: true, has_layout: true}}
+      {name: 'Participación Ciudadana', description: 'Participación Ciudadana', options: {has_category: false, has_tags: false, not_deleted: true, has_summary: false, has_content: true, has_comments: false, has_picture: true, has_template: true, has_layout: true}},
+      
+      {name: 'Estratificación Socioeconómica', description: 'Certificado de estratificación socioeconómica', options: {has_category: false, has_tags: false, not_deleted: true, has_summary: false, has_content: true, has_comments: false, has_picture: true, has_template: true, has_layout: true}}
     ]
     default_post_type.each do |pt|
       model_pt = theme.site.post_types.create({name: pt[:name], slug: pt[:name].to_s.parameterize, description: pt[:description], data_options: pt[:options]})
@@ -40,6 +56,12 @@ module Themes::GobiernoLinea::MainHelper
         end
       end
     end
+
+    # Main Color
+    theme.add_field({"name"=>"Color principal", "slug"=>"main_color"},{field_key: "colorpicker", color_format: "rgb", default_value: "rgb(4,57,80)"})
+
+    # Secondary Color
+    theme.add_field({"name"=>"Color segundario", "slug"=>"secondary_color"},{field_key: "colorpicker", color_format: "rgb", default_value: "rgb(243,165,54)"})
 
     # Main image
     theme.add_field({"name"=>"Imagen principal", "slug"=>"main_image"},{field_key: "image"})
@@ -68,19 +90,34 @@ module Themes::GobiernoLinea::MainHelper
     gr.add_field({"name"=>"Title", "slug"=>"gel_collaborators_title"},{field_key: "text_box", translate: true})
     gr.add_field({"name"=>"Image", "slug"=>"gel_collaborators_image"},{field_key: "image"})
     gr.add_field({"name"=>"Link", "slug"=>"gel_collaborators_url"},{field_key: "url"})
+
+    # Datos del tipo documental del formulario
+    gr = current_theme.add_field_group({name: "GEL Datos tipo documental", slug: "gel_typedocumetal", is_repeat: false}, 'tramites-y-servicios')
+    gr.add_field({"name"=>"Codigo de Area", "slug"=>"gel_typedocumetal_areaCode"},{field_key: "numeric"})
+    gr.add_field({"name"=>"Codigo tipo documental", "slug"=>"gel_typedocumetal_typedocument"},{field_key: "numeric"})
+    gr.add_field({"name"=>"Serie", "slug"=>"gel_typedocumetal_serie"},{field_key: "numeric", default_value: 4})
+    gr.add_field({"name"=>"Sub-Serie", "slug"=>"gel_typedocumetal_subserie"},{field_key: "numeric", default_value: 4.1})
+    
+    # Formulario del tipo documental
+    gr = current_theme.add_field_group({name: "GEL Formularios", slug: "gel_forms", is_repeat: true}, 'tramites-y-servicios')
+    gr.add_field({"name"=>"Title", "slug"=>"gel_forms_title"},{field_key: "text_box", translate: true})
+    gr.add_field({"name"=>"Es Requerido?", "slug"=>"gel_forms_required"}, {field_key: "checkbox", multiple_options: [
+      {title: "¿Es requerido?", value: "true", default: true}
+    ]})
+    gr.add_field({"name"=>"Tipo de campo", "slug"=>"gel_forms_type"}, {field_key: "select", multiple_options: [
+      {title: "Campo de texto", value: "text_area_tag", default: true},
+      {title: "Telefono", value: "telephone_field"},
+      {title: "Fecha", value: "date_field"},
+      {title: "Email", value: "email_field"},
+      {title: "Numerico", value: "number_field"},
+    ]})
+    gr.add_field({"name"=>"Numero Metadato", "slug"=>"gel_forms_metadato"},{field_key: "numeric"})
   end
 
   # callback executed after theme uninstalled
   def gobierno_linea_on_uninstall_theme(theme)
     theme.get_field_groups().destroy_all
     theme.destroy
-  end
-
-  require 'savon'
-  def savon_soap
-    puts "HOLAAAAAAAAAAA ENFERMERAAAAAAAAAA"
-    wsdl = 'https://evolution-epx.com:8030/ePxExternalSRV.asmx?wsdl'
-    client = Savon.client(wsdl: wsdl)
   end
 
   def slider_custom_fields(args)

@@ -14,6 +14,85 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy"
     crossorigin="anonymous">
+
+  <style>
+
+    .main-color {
+      background-color: <%= current_theme.the_field("main_color") %>;
+    }
+
+    .secondary-color {
+      color: <%= current_theme.the_field("secondary_color") %>;
+    }
+
+    .text-color {
+      color: rgb(4, 57, 80);
+    }
+
+    #app-header .dropdown-menu {
+      border: 1px solid white;
+      background-color: <%= current_theme.the_field("main_color") %>;
+    }
+    
+    #app-header .dropdown.show {
+      background-color: <%= current_theme.the_field("secondary_color") %>;
+      border-radius: 5px;
+    }
+    
+    #app-header .dropdown a:hover {
+      background-color: <%= current_theme.the_field("secondary_color") %>;
+    }
+
+    /* Color "activo" del navbar */
+    #app-header .nav-pills .nav-link.active,
+    .nav-pills .show>.nav-link {
+      background-color: <%= current_theme.the_field("secondary_color") %>;
+    }
+
+    /* Color de las esquinas badge */
+    #app-noticias .badge-corner {
+      border-top-color: <%= current_theme.the_field("secondary_color") %>;
+    }
+
+    /* Color de las letras en los tramites */
+    #app-tramites .nav-pills a {
+      color: rgb(4, 57, 80);
+      font-size: 16px;
+    }
+
+    /* Color "activo" de las pestañas de tramites y servicios */
+    #app-tramites .nav-pills .nav-link.active,
+    .nav-pills .show>.nav-link {
+      color: white;
+      background-color: rgb(4, 57, 80);
+    }
+
+    /* Color del borde divisor de la seccion de tramites */
+    #app-tramites .tramites {
+      border-right: 1px solid rgb(4, 57, 80);
+    }
+
+    /* Color de las letras en la seccion tramites */
+    #app-tramites .ayuda h6,
+    #app-tramites .ayuda small,
+    #app-tramites .ayuda i {
+      color: rgb(4, 57, 80);
+    }
+
+    /* Color de fondo de la seccion "conocenos" */
+    #app-conocenos {
+      background-color: rgb(92, 91, 91);
+    }
+
+    /* color de los links de la seccion conocenos */
+    #app-conocenos .conocenos-mas li a {
+      color: rgb(20, 167, 20);
+    }
+
+    #app-canales {
+      color: rgb(4, 57, 80);
+    }
+  </style>
 </head>
 <body>
   <!-- container -->

@@ -1,0 +1,18 @@
+<% 
+  page_title = 'Licencia para ampliación o modificación' 
+  page_description = 'El resultado de este trámite es obtener la autorización previa para adelantar obras de urbanización y parcelación de predios; de construcción en sus modalidades de ampliación y modificación.' 
+  code_number = '8011' 
+  extra_field = "#{label_tag(:copy_doc_id, 'Copia escaneada del certificado de tradición o escritura *', :class => 'text-success')}
+    #{file_field_tag 'copy_doc_id', :required => true, :class => 'form-control'}
+    #{label_tag(:receipt_canceled, 'Copia escaneada de la licencia de construcción *', :class => 'text-success')}
+    #{file_field_tag 'receipt_canceled', :class => 'form-control'}"
+%>
+
+<%= 
+  render partial: 'layouts/forms', locals: {
+    page_title: page_title, 
+    page_description: page_description, 
+    code_number: code_number, 
+    extra_field: extra_field
+  } 
+%>

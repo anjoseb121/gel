@@ -25,7 +25,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'camaleon_cms', :git => 'https://github.com/tisolutions/camaleon-cms.git', :branch => 'master'
 gem 'draper', '~> 3' # only for Rails 5
 
-#Heavy metal SOAP client
+# Heavy metal SOAP client
 gem 'savon', '~> 2.12.0'
 
 # Use CoffeeScript for .coffee assets and views

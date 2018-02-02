@@ -1,44 +1,166 @@
-<!-- header -->
-<header id="app-header">
-  <div class="container">
-    <div class="row text-white">
-      <div class="col-5">
-        <%= image_tag current_site.the_logo, class: "img-fluid float-left logo" %>
-        <ul class="list-unstyled marca">
-          <li class="alcaldia"><%= current_site.the_title %></li>
-          <li class="liderando"><%= current_site.the_content %></li>
-        </ul>
-      </div>
-      <div class="col-7">
-        <!-- Iconos -->
-        <div class="row top-icons">
-          <div class="col-12 text-right">
-            <a href="#">
-              <i class="fa fa-cog" aria-hidden="true"></i>
-            </a>
-            <a href="#">
-              <i class="fa fa-question-circle" aria-hidden="true"></i>
-            </a>
-          </div>
-        </div>
-        <!-- /Iconos -->
-        <!-- Navegacion -->
-        <div class="col navegacion mt-2">
-          <div class="row">
-            <div class="col-11 offset-1">
-              <ul class="nav nav-pills">
-                <% cama_menu_parse_items(current_site.nav_menus.find_by_slug('gel_main_menu').children).each do |item| %>
-                  <li class="nav-item">
-                    <a class="nav-link <%= 'active' if site_current_path == item[:url] %>" href="<%= item[:url] %>"><%= item[:label] %></a>
-                  </li>
-                <% end %>
+<!-- Header -->
+<header id="app-header" class="main-color">
+  <div class="row text-center config-menu">
+    <div class="col">
+      <div class="pos-f-t">
+        <div class="collapse" id="navbarToggleExternalContent2">
+          <!-- <h4 class="text-white">Prueba</h4> -->
+          <div class="row text-white mt-2">
+            <div class="col-md-4">
+              <div class="blank-spacer padding-xsmall"></div>
+              <h3 class="Titleacce">
+                <i class="fa fa-universal-access color-success"></i> Opciones de Accesibilidad</h3>
+              <p>Con el objetivo de facilitar la navegación y acceso a la información en este portal web a personas con dificultades
+                visuales, se habilitaron las siguientes opciones:</p>
+              <p>
+                <i class="fa fa-plus-circle color-success"></i> Aumento de Fuente </p>
+              <p>
+                <i class="fa fa-plus-circle color-success"></i> Alto Contraste </p>
+              <h3 class="Titleacce">Ayudas</h3>
+              <p>
+                <i class="fa fa-plus-circle color-success"></i> Descargar
+                <a style="margin:0" target="_blank" href="http://www.essentialaccessibility.com/es/download"
+                  title="eSSENTIAL Accessibility"> eSSENTIAL Accessibility </a> Diferentes herramientas que facilitan la navegacion.</p>
+              <p>
+                <i class="fa fa-plus-circle color-success"></i> Descargar
+                <a style="margin:0" target="_blank" href="http://micrositios.mintic.gov.co/convertic/" title="CONVERTIC #TecnologíaParaVer">
+                CONVERTIC </a>Descarga gratuitamente de la pagina de MINTIC un lector de Pantalla y un magnificador de
+                imágenes. </p>
+              <div class="blank-spacer padding-xsmall"></div>
+            </div>
+            <div class="col-md-4">
+              <div class="blank-spacer padding-xsmall"></div>
+              <h3 class="Titleacce">
+                <i class="fa fa-keyboard-o color-success"></i> Teclas de Acceso</h3>
+              <ul class="acceskey">
+                <li>ALT + i = Información del Municipio</li>
+                <li>ALT + t = Trámites y servicios</li>
+                <li>ALT + l = Pagos en línea</li>
+                <li>ALT + q = PQRD</li>
+                <li>ALT + n = Noticias</li>
+                <li>ALT + a = Transparencia y acceso a la información pública</li>
               </ul>
+              <div class="blank-spacer padding-xsmall"></div>
+            </div>
+            <div class="col-md-4">
+              <div class="blank-spacer padding-xsmall"></div>
+              <p class="Titleacce">Para hacer uso de los accesskey en Internet Explorer deberá:</p>
+              <ul class="acceskey">
+                <li>Pulsar la tecla Alt</li>
+                <li>Pulsar el número o letra adecuada </li>
+                <li>Soltar la tecla Alt y el número</li>
+                <li>pulsar la tecla Enter y soltar</li>
+              </ul>
+              <p class="Titleacce">Para hacer uso de los accesskey en Google Crome deberá:</p>
+              <ul class="acceskey">
+                <li>Pulsar la tecla Alt</li>
+                <li>Pulsar el número o letra adecuada </li>
+              </ul>
+              <p class="Titleacce">Para hacer uso de los accesskey en Mozilla y Safary deberá:</p>
+              <ul class="acceskey">
+                <li>Pulsar la tecla Alt</li>
+                <li>Pulsar la tecla Shift</li>
+                <li>Pulsar el número o letra adecuada </li>
+
+              </ul>
+              <div class="blank-spacer padding-xsmall"></div>
             </div>
           </div>
         </div>
-        <!-- /Navegacion -->
+        <div class="collapse" id="navbarToggleExternalContent">
+          <div class="row mt-3">
+            <div class="col">
+              <div class="row justify-content-center">
+                <div class="col-12 col-md-4 col-lg-2">
+                  <a class="text-white" href="/sitemap.html">Mapa del sitio</a>
+                </div>
+                <div class="col-12 col-md-4 col-lg-3">
+                  <a class="text-white" href=".">Configuración por defecto</a>
+                </div>
+                <div class="col-12 col-md-4 col-lg-2">
+                  <button onclick="contrast()" class="btn btn-link">
+                    Alto contraste
+                  </button>
+                </div>
+                <div class="col-12 col-md-6 col-lg-2">
+                  <a class="text-white" href="#">Seleccionar idioma</a>
+                </div>
+                <%= raw current_site.draw_languages("language list-inline pull-right", true) %>
+                <div class="col-12 col-md-6 col-lg-2">
+                  <ul class="list-unstyled list-inline font-buttons">
+                    <li class="list-inline-item">
+                      <button onclick="reduceText()">
+                        <i class="fa fa-font text-color" aria-hidden="true">-</i>
+                      </button>
+                    </li>
+                    <li class="list-inline-item">
+                      <button onclick="reestablishText()">
+                        <i class="fa fa-font text-color" aria-hidden="true"></i>
+                      </button>
+                    </li>
+                    <li class="list-inline-item">
+                      <button onclick="increaseText()">
+                        <i class="fa fa-font text-color" aria-hidden="true">+</i>
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Boton de engranaje para desplegar la configuracion de pagina -->
+        <nav class="navbar main-color">
+          <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent2" aria-controls="navbarToggleExternalContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fa fa-sort text-white"></i>
+          </button>
+          <button class="navbar-toggler ml-0" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fa fa-cog text-white" aria-hidden="true"></i>
+          </button>
+        </nav>
+        <!-- /Boton de engranaje para desplegar la configuracion de pagina -->
       </div>
     </div>
   </div>
+  <!-- Columna para logo y marca -->
+  <div class="row text-white justify-content-between">
+    <!-- Fila para logo y marca -->
+    <div class="col-12 col-sm-10 col-lg-5 ml-4 mb-3">
+      <div class="row">
+        <div class="col-2 col-sm-1 col-md-1 col-lg-2 p-0 ml-4">
+          <a href="<%= current_site.the_url %>" title="<%= current_site.the_title %>" rel="home">
+            <%= image_tag current_site.the_logo, class: "logo img-fluid" %>
+          </a>
+        </div>
+        <div class="col-8 col-sm-8 col-md-8 pt-2 pl-2 p-0 ml-2">
+          <h5><%= current_site.the_title %></h5>
+          <h6><%= current_site.the_content %></h6>
+        </div>
+      </div>
+    </div>
+    <!-- /Fila para logo y marca -->
+    <!-- Fila para barra de navegacion -->
+    <div class="col-12 col-md-12 offset-md-1 col-lg-6 offset-lg-0 p-0 mr-4">
+      <nav class="navbar navbar-expand-md p-0">
+        <button class="navbar-toggler ml-5 text-white mb-2" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fa fa-bars" aria-hidden="true"></i>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto text-center">
+            <% cama_menu_parse_items(current_site.nav_menus.find_by_slug('gel_main_menu').children).each do |item| %>
+              <li class="nav-item">
+                <a class="nav-link text-white <%= 'active' if site_current_path == item[:url] %>" href="<%= item[:url] %>"><%= item[:label] %></a>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <!-- /Fila para barra de navegacion -->
+  </div>
 </header>
-<!-- /header -->
+<!-- /Header -->

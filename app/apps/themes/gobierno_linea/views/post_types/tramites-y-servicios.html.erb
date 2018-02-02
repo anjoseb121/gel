@@ -1,35 +1,25 @@
-<% services = current_theme.the_fields_grouped(['gel_services_title', 'gel_services_image', 'gel_services_descr', 'gel_services_url']) %>
-<div class="containerdos">
-  <div class="row">
-    <% services.each_with_index do |item, index| %>
-      <div class="carduno">
-        <img class="card-img-top" height="200" src="<%= item['gel_services_image'].first %>" width="50" height="50" alt="<%= item['gel_services_title'].first %>">
-        <div class="card-body">
-          <h4 class="card-title">
-            <%= item['gel_services_title'].first %>
-          </h4>
-          <p class="card-text">
-            <%= item['gel_services_descr'].first %>
-          </p>
-          <a href="<%= item['gel_services_url'].first %>" class="btn btn-primary">Go</a>
+<div class="row justify-content-center">
+  <div class="col-8 offset-1 contenedor mt-2 mb-2">
+    <div class="row mt-5 text-color ml-1">
+      <h3>
+        <strong><%= raw @post_type.the_content %></strong>
+      </h3>
+
+      <% if @categories.present? %>
+        <div class="categories_list">
+          <%= render partial: "partials/categories_list", locals: {categories: @categories} %>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
+  </div>
 </div>
 
-<%= form_tag("/formulario", method: "get") do %>
-  <p>
-    <%= text_field_tag :data, params[:data] %>
-    <%= submit_tag "Lookup", name: nil %>
-  </p>
-<% end %>
-
-<p>
-  <%= raw @formulario %>
-</p>
-hola 
-<% flash[:formulas] %>
-enfermera
-<p>
-  <%= raw @prueba %>
-</p>
+<article id="post_type-view" class="post_type_<%= @post_type.slug %>">
+  <% _tpl = lookup_context.template_exists?("post_types/#{@post_type.the_slug}/post_list_item", nil, true) ? "post_types/#{@post_type.the_slug}/post_list_item" : 'partials/post_list_item' %>
+  <% @posts.each_with_index do |post, index| %>
+      <%#= raw "<div class='clearfix'></div>" if index%3 == 0 && index > 0 %>
+      <%= render partial: _tpl, locals: {post: post.decorate, index: index} %>
+  <% end %>
+  <%= content_tag("div", raw(ct('no_contents_found', default: 'No contents found.')), class: "alert alert-warning") if @posts.empty? %>
+  <%= will_paginate @posts, renderer: BootstrapPagination::Rails if @posts.present? %>
+</article>
