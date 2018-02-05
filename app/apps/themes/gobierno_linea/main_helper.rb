@@ -1,7 +1,7 @@
 module Themes::GobiernoLinea::MainHelper
 
   def self.included(klass)
-    klass.helper_method [:documents_types] rescue "" # here your methods accessible from views
+    klass.helper_method [:documents_types, :licence_types] rescue "" # here your methods accessible from views
   end
 
   def gobierno_linea_settings(theme)
@@ -18,6 +18,13 @@ module Themes::GobiernoLinea::MainHelper
       ['Tarjeta Decadactilar', 'TD'],
       ['Pasaporte', 'PA'],
       ['No Reportado', 'NR']
+    ]
+  end
+
+  def licence_types
+    [
+      ['Licencia para ampliación', 1],
+      ['Licencia para modificación', 2]
     ]
   end
 

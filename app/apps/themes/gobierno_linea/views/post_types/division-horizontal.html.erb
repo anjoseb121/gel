@@ -1,8 +1,10 @@
 <% 
-  page_title = 'Csertificado de división horizontal' 
+  page_title = 'Certificado de división horizontal' 
   page_description = 'El resultado de este tramite es obtener la aprobación de los planos de alinderamiento, cuadros de áreas o proyecto de división entre bienes privados y bienes comunes de la propiedad horizontal. Este se emite para certificar una licencia ya aprobada o ejecutada' 
   code_number = '8009' 
-  extra_field = "#{label_tag(:copy_doc_id, 'Copia de la escritura *', :class => 'text-success')}
+  extra_field = "#{label_tag(:registration_number, 'Numero de Matricula', :class => 'text-success')}
+    #{number_field :registration_number, params[:registration_number], :class => "form-control"}
+    #{label_tag(:copy_doc_id, 'Copia de la escritura *', :class => 'text-success')}
     #{file_field_tag 'copy_doc_id', :required => true, :class => 'form-control'}
     #{label_tag(:receipt_canceled, 'Planos aprobados *', :class => 'text-success')}
     #{file_field_tag 'receipt_canceled', :class => 'form-control'}
