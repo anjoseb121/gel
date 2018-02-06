@@ -11,12 +11,12 @@ class Formulario
     description = data_wsdl[:description]
     address = data_wsdl[:address]
     neighbor = data_wsdl[:neighbor]
-    predial = data_wsdl[:predial]
-    lot = data_wsdl[:lot]
+    predial = data_wsdl[:predial][0]
+    lot = data_wsdl[:lot][0]
     neighborhood = data_wsdl[:neighborhood]
     urbanization = data_wsdl[:urbanization]
     id_type = data_wsdl[:id_type]
-    id_number = data_wsdl[:id_number]
+    id_number = data_wsdl[:id_number][0]
     registration_number = data_wsdl[:registration_number]
     license_type = data_wsdl[:license_type]
 
@@ -72,9 +72,9 @@ class Formulario
 
     if license_type 
       keys.push({:int => 3042})
-      values.push({:string => license_type})
+      values.push({:string => license_type.to_i})
     end
-
+    
     wsdl = 'https://evolution-epx.com:8027/ePxExternalSRV.asmx?wsdl'
     client = Savon.client(wsdl: wsdl)
     message_data = {
@@ -113,6 +113,7 @@ class Formulario
     @attr_response = response_message
   end
 
+  
   def encode_file_base64 tmp_file
     encoded = Base64.encode64(File.open(tmp_file).read)
   end
