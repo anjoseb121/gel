@@ -5,15 +5,15 @@
   extra_field = "#{label_tag(:registration_number, 'Numero de Matricula', :class => 'text-success')}
     #{number_field :registration_number, params[:registration_number], :class => "form-control"}
     #{label_tag(:copy_doc_id, 'Copia de la escritura *', :class => 'text-success')}
-    #{file_field_tag 'copy_doc_id', :required => true, :class => 'form-control'}
+    #{file_field_tag 'copy_doc_id', :required => true, :class => 'form-control file_tag'}
     #{label_tag(:receipt_canceled, 'Planos aprobados *', :class => 'text-success')}
-    #{file_field_tag 'receipt_canceled', :required => true, :class => 'form-control'}
-    #{label_tag(:third_document, 'Certificado de tradición', :class => 'text-success')}
-    #{file_field_tag 'third_document', :class => 'form-control'}
-    #{label_tag(:fourth_document, 'Memoria descriptiva', :class => 'text-success')}
-    #{file_field_tag 'fourth_document', :class => 'form-control'}
-    #{label_tag(:fifth_document, 'Recibo de pago cancelado', :class => 'text-success')}
-    #{file_field_tag 'fifth_document', :class => 'form-control'}"
+    #{file_field_tag 'receipt_canceled', :required => true, :class => 'form-control file_tag'}
+    #{label_tag(:third_document, 'Certificado de tradición *', :class => 'text-success')}
+    #{file_field_tag 'third_document', :required => true, :class => 'form-control file_tag'}
+    #{label_tag(:fourth_document, 'Memoria descriptiva *', :class => 'text-success')}
+    #{file_field_tag 'fourth_document', :required => true, :class => 'form-control file_tag'}
+    #{label_tag(:fifth_document, 'Recibo de pago cancelado *', :class => 'text-success')}
+    #{file_field_tag 'fifth_document', :required => true, :class => 'form-control file_tag'}"
 %>
 
 <%= 

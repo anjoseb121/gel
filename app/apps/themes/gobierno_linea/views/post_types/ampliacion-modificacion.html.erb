@@ -5,9 +5,9 @@
   extra_field = "#{label_tag(:license_type, "Tipo de licencia a solicitar: *", :class => "text-success")}
     #{select_tag(:license_type, options_for_select(licence_types), :class => "form-control mt-3")}
     #{label_tag(:copy_doc_id, 'Copia escaneada del certificado de tradición o escritura *', :class => 'text-success')}
-    #{file_field_tag 'copy_doc_id', :required => true, :class => 'form-control'}
+    #{file_field_tag 'copy_doc_id', :required => true, :class => 'form-control file_tag'}
     #{label_tag(:receipt_canceled, 'Copia escaneada de la licencia de construcción *', :class => 'text-success')}
-    #{file_field_tag 'receipt_canceled', :required => true, :class => 'form-control'}"
+    #{file_field_tag 'receipt_canceled', :required => true, :class => 'form-control file_tag'}"
 %>
 
 <%= 
