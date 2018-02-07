@@ -1,7 +1,7 @@
 module Themes::GobiernoLinea::MainHelper
 
   def self.included(klass)
-    klass.helper_method [:documents_types, :licence_types] rescue "" # here your methods accessible from views
+    klass.helper_method [:documents_types, :licence_types, :mineTypeAccepted] rescue "" # here your methods accessible from views
   end
 
   def gobierno_linea_settings(theme)
@@ -26,6 +26,10 @@ module Themes::GobiernoLinea::MainHelper
       ['Licencia para ampliación', 1],
       ['Licencia para modificación', 2]
     ]
+  end
+
+  def mineTypeAccepted 
+    'application/pdf, image/*'
   end
 
   # callback called after theme installed
