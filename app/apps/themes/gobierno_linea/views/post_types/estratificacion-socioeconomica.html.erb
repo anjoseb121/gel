@@ -3,9 +3,9 @@
   page_description = 'El resultado de este trámite es obtener el Certificar el estrato socio-económico oficial de uno o varios inmuebles residenciales, urbanos y rurales que se encuentren en jurisdicción del Municipio.' 
   code_number = '8008' 
   extra_field = "#{label_tag(:copy_doc_id, 'Copia escaneada del documento de identidad del propietario. *', :class => 'text-success')}
-    #{file_field_tag 'copy_doc_id', :required => true, :class => 'form-control'}
+    #{file_field_tag 'copy_doc_id', :required => true, :class => 'form-control file_tag'}
     #{label_tag(:receipt_canceled, 'Recibo de pago cancelado', :class => 'text-success')}
-    #{file_field_tag 'receipt_canceled', :class => 'form-control'}"
+    #{file_field_tag 'receipt_canceled', :class => 'form-control file_tag'}"
 %>
 
 <%= 
