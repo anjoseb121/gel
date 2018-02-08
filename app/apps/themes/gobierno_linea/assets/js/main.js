@@ -16,7 +16,7 @@
 
 //Tamaño maximo de los archivos a subir. 
 var maxFileSize = 10;
-errorMessage = 'File size exceeds ' + maxFileSize + 'MB';
+errorMessage = 'Los archivos exceden los ' + maxFileSize + 'MB maximos permitidos.';
 
 $(document).on("change", ".file_tag", function (data) {
   var FileSize = data.target.files[0].size / 1024 / 1024; // in MB

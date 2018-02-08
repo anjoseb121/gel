@@ -3,9 +3,9 @@
   page_description = 'El resultado de este trámite es obtener el tramite de Nomenclatura que se encuentren en jurisdicción del Municipio.' 
   code_number = '8010' 
   extra_field = "#{label_tag(:copy_doc_id, 'Copia escaneada de la licencia de construcción. *', :class => 'text-success')}
-    #{file_field_tag 'copy_doc_id', :required => true, :class => 'form-control file_tag'}
+    #{file_field_tag 'copy_doc_id', :required => true, accept: mineTypeAccepted, :class => 'form-control file_tag'}
     #{label_tag(:receipt_canceled, 'Recibo de pago cancelado', :class => 'text-success')}
-    #{file_field_tag 'receipt_canceled', :class => 'form-control file_tag'}"
+    #{file_field_tag 'receipt_canceled', accept: mineTypeAccepted, :class => 'form-control file_tag'}"
 %>
 
 <%= 
