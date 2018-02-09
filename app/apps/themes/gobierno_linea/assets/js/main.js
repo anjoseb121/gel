@@ -26,12 +26,21 @@ $(document).on("change", ".file_tag", function (data) {
   }
 });
 
-//No permite que se ingrese la letra E (Exponencial) en los campos de texto numericos
-$(document).on("change", "input[type=number]", function (data) {
-  var letterE = /[eE]/g
-  if (this.value.match(letterE)) {
-    this.value = this.value.replace(letterE, '');
+function changeLetters(data) {
+  var letters = /[A-Za-z]/gm
+  if (data.value.match(letters)) {
+    data.value = data.value.replace(letters, '');
   }
+}
+
+//No permite que se ingrese la letra E (Exponencial) en los campos de texto numericos
+$(document).on("change", "input[type=number]", function () {
+  changeLetters(this)
+})
+
+//No permite que se ingresen letras en los campos de numericos
+$(document).on("change", "input[type=tel]", function () {
+  changeLetters(this)
 })
 
 $(document).ready(function () {
