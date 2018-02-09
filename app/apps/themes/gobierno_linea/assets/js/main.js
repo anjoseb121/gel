@@ -26,14 +26,24 @@ $(document).on("change", ".file_tag", function (data) {
   }
 });
 
+//No permite que se ingrese la letra E (Exponencial) en los campos de texto numericos
+$(document).on("change", "input[type=number]", function (data) {
+  var letterE = /[eE]/g
+  if (this.value.match(letterE)) {
+    this.value = this.value.replace(letterE, '');
+  }
+})
+
 $(document).ready(function () {
   $("#submit_button").click(function (e) {
     var totalFileSize = 0
+    var fieldsNames = []
     $("#my-form").find("input[type=file]").each(function (index, field) {
       for (var i = 0; i < field.files.length; i++) {
         var file = field.files[i];
         var FileSize = file.size / 1024 / 1024; // in MB
         totalFileSize += FileSize;
+        fieldsNames.push(file.name)
         if (FileSize > maxFileSize) {
           alert(errorMessage);
           e.preventDefault();
@@ -43,6 +53,10 @@ $(document).ready(function () {
     if (totalFileSize > maxFileSize) {
       alert(errorMessage);
       e.preventDefault();
+    }
+    if (areDuplicateValues(fieldsNames)) {
+      alert("No se pueden adjuntar archivos con el mismo nombre.");
+      e.preventDefault()
     }
 
     //Para aceptar los terminos y condiciones (Esto pasa cuando se utiliza jQuery)
@@ -79,4 +93,20 @@ function reduceText() {
 function increaseText() {
   reestablishText();
   document.body.style.fontSize = "1.35em";
+}
+
+/**
+ * Find if are duplicates values in some array
+ * @param {*array} arrayValues 
+ * @returns {*boolean} 
+ */
+function areDuplicateValues(arrayValues) {
+  for (var i = 0; i <= arrayValues.length; i++) {
+    for (var j = i; j <= arrayValues.length; j++) {
+      if (i != j && arrayValues[i] == arrayValues[j]) {
+        return true;
+      }
+    }
+  }
+  return false;
 }
